@@ -1,7 +1,27 @@
 Rails.application.routes.draw do
+  resources :activity_categories
+
+  resources :issues
+
+  resources :activities
+
+  resources :projects
+
+  devise_for :users
+
   get 'home/index'
 
   root 'home#index'
+
+  devise_scope :user do
+    authenticated :user do
+      # root 'exams#home', as: :authenticated_root
+    end
+    unauthenticated do
+      root 'home#index', as: :unauthenticated_root
+    end
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
