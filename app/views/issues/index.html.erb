@@ -1,27 +1,37 @@
-<h1>Listing issues</h1>
+<div id="new_project" class="col-md-4">
+  <h3><%= link_to 'New Issue', new_issue_path %></h3>
+</div>
+<div id="all_projects" class="col-md-4">
+  <div class="container">
+    <div class="page-header">
+      <h1>Listing issues</h1>
+    </div>
+    <br/>
+    <div class="row">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Issueid</th>
+          <th>Issuename</th>
+          <th colspan="3"></th>
+        </tr>
+        </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Issueid</th>
-      <th>Issuename</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+        <tbody>
+        <% @issues.each do |issue| %>
+            <tr>
+              <td><%= issue.issueId %></td>
+              <td><%= issue.issueName %></td>
+              <td><%= link_to 'Show', issue %></td>
+              <td><%= link_to 'Edit', edit_issue_path(issue) %></td>
+              <td><%= link_to 'Destroy', issue, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
 
-  <tbody>
-    <% @issues.each do |issue| %>
-      <tr>
-        <td><%= issue.issueId %></td>
-        <td><%= issue.issueName %></td>
-        <td><%= link_to 'Show', issue %></td>
-        <td><%= link_to 'Edit', edit_issue_path(issue) %></td>
-        <td><%= link_to 'Destroy', issue, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <br>
+    </div>
+  </div>
+</div>
 
-<br>
-
-<%= link_to 'New Issue', new_issue_path %>
