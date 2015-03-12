@@ -24,8 +24,13 @@
               <td><%= activity.activityId %></td>
               <td><%= activity.activityName %></td>
               <td><%= link_to 'Show', activity %></td>
+<<<<<<< HEAD
               <td><% link_to 'Edit', edit_activity_path(activity) %></td>
               <td><% link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+=======
+              <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
+              <td><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+>>>>>>> dea2524572188f1ad1e98e8bd07f45b5b88bbddf
             </tr>
         <% end %>
         </tbody>

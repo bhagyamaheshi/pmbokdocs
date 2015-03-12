@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gem 'devise'
 
+# gem 'active_admin'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
 # Use postgresql as the database for Active Record
@@ -43,4 +45,3 @@ gem 'autoprefixer-rails'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
