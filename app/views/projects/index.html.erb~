@@ -30,6 +30,18 @@
               <td><%= project.startDate %></td>
               <td><%= project.endDate %></td>
               <td><%= link_to 'Show', project %></td>
+<<<<<<< HEAD
+              <td><% link_to 'Edit', edit_project_path(project) %></td>
+              <td><% link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+=======
+<<<<<<< HEAD
+              <td><% link_to 'Edit', edit_project_path(project) %></td>
+              <td><% link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+=======
+              <td><%= link_to 'Edit', edit_project_path(project) %></td>
+              <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+>>>>>>> dea2524572188f1ad1e98e8bd07f45b5b88bbddf
+>>>>>>> ed24a963de312266851889715617ef1ed6b9cd6e
             </tr>
         <% end %>
         </tbody>

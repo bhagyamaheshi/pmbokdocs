@@ -23,7 +23,18 @@
               <td><%= issue.issueId %></td>
               <td><%= issue.issueName %></td>
               <td><%= link_to 'Show', issue %></td>
-
+<<<<<<< HEAD
+              <td><% link_to 'Edit', edit_issue_path(issue) %></td>
+              <td><% link_to 'Destroy', issue, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+=======
+<<<<<<< HEAD
+              <td><% link_to 'Edit', edit_issue_path(issue) %></td>
+              <td><% link_to 'Destroy', issue, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+=======
+              <td><%= link_to 'Edit', edit_issue_path(issue) %></td>
+              <td><%= link_to 'Destroy', issue, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+>>>>>>> dea2524572188f1ad1e98e8bd07f45b5b88bbddf
+>>>>>>> ed24a963de312266851889715617ef1ed6b9cd6e
             </tr>
         <% end %>
         </tbody>
