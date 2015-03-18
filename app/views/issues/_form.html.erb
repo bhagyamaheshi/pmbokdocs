@@ -11,15 +11,17 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :issueId %><br>
-    <%= f.text_field :issueId %>
+  <div class="form-group">
+    <div class="col-lg-3"><%= f.label :issueId %></div>
+    <div class="col-lg-9"><%= f.text_field :issueId %></div>
   </div>
-  <div class="field">
-    <%= f.label :issueName %><br>
-    <%= f.text_field :issueName %>
+  <div class="form-group">
+    <div class="col-lg-3"><%= f.label :issueName %></div>
+    <div class="col-lg-9"><%= f.text_field :issueName %></div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-9"><%= f.submit "Create Issue", :class => "btn btn-default" %> &nbsp;&nbsp;
+    <%= link_to 'Back', issues_path, :class => "btn btn-default" %></div>
   </div>
 <% end %>

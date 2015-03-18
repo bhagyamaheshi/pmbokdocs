@@ -10,16 +10,17 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :activityId %><br>
-    <%= f.text_field :activityId %>
+  <div class="form-group">
+    <div class="col-lg-3"><%= f.label :activityId %></div>
+    <div class="col-lg-9"><%= f.text_field :activityId %></div>
   </div>
-  <div class="field">
-    <%= f.label :activityName %><br>
-    <%= f.text_field :activityName %>
+  <div class="form-group">
+    <div class="col-lg-3"><%= f.label :activityName %></div>
+    <div class="col-lg-9"><%= f.text_field :activityName %></div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-9"><%= f.submit "Create Activity", :class => "btn btn-default" %> &nbsp;&nbsp;
+    <%= link_to 'Back', activities_path, :class => "btn btn-default" %></div>
   </div>
 <% end %>
