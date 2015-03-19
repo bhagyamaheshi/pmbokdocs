@@ -104,11 +104,8 @@ ActiveRecord::Schema.define(version: 20150319140153) do
     t.string   "phoneNo"
     t.datetime "created_at"
     t.datetime "updated_at"
-<<<<<<< HEAD
-=======
     t.string   "firstName"
     t.string   "lastName"
->>>>>>> 2aa4a455db8d0536c4daef0c21410ef68c3528e1
     t.integer  "role_id"
   end
 
