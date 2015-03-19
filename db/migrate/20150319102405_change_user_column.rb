@@ -1,4 +1,4 @@
-class AddRoleToUsers < ActiveRecord::Migration
+class ChangeUserColumn < ActiveRecord::Migration
   def change
     add_reference :users, :role, index: true
   end

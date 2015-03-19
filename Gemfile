@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gem 'devise'
 
+gem 'paperclip', '~> 4.2'
+
 # gem 'active_admin'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
