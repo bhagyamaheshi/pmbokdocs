@@ -24,6 +24,14 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     @project.save
+    @project.users.create(params[:user_id])
+
+    #collection_ids.each do |user_id| # assuming collection_ids is an array
+      #user = User.find(user_id)
+      #@project.project_teams.create(:user_id => user)
+      #@team = ProjectTeam.new (@project.project_teams.create(:user_id => user))
+      #@team.save
+    #end
     respond_with(@project)
   end
 
@@ -44,5 +52,8 @@ class ProjectsController < ApplicationController
 
     def project_params
       params.require(:project).permit(:projectId, :projectName, :description, :startDate, :endDate)
+    end
+    def collection_ids
+      params.require(:project).permit(:user_id)
     end
 end
