@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :document_categories
+
+  resources :documents
+
   resources :activity_categories
 
   resources :issues
