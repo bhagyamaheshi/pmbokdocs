@@ -12,7 +12,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 
-ActiveRecord::Schema.define(version: 20150319145957) do
+ActiveRecord::Schema.define(version: 20150319140153) do
 
 
   # These are extensions that must be enabled in order to support this database
@@ -50,10 +50,6 @@ ActiveRecord::Schema.define(version: 20150319145957) do
     t.datetime "updated_at"
     t.integer  "project_id"
     t.integer  "document_category_id"
-    t.string   "file_file_name"
-    t.string   "file_content_type"
-    t.integer  "file_file_size"
-    t.datetime "file_updated_at"
   end
 
   add_index "documents", ["document_category_id"], name: "index_documents_on_document_category_id", using: :btree
@@ -108,8 +104,11 @@ ActiveRecord::Schema.define(version: 20150319145957) do
     t.string   "phoneNo"
     t.datetime "created_at"
     t.datetime "updated_at"
+<<<<<<< HEAD
+=======
     t.string   "firstName"
     t.string   "lastName"
+>>>>>>> 2aa4a455db8d0536c4daef0c21410ef68c3528e1
     t.integer  "role_id"
   end
 
