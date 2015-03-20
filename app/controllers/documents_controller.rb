@@ -23,18 +23,11 @@ class DocumentsController < ApplicationController
 
   def create
     @document = Document.new(document_params)
-    file = File.open(:file)
-    respond_to do |format|
-      if @document.save
-        File.open(Rails.root.join('public', 'data', @document.path), 'wb') do |f|
-          if file
-            f.write(file.read)
-          end
-        end
-        format.html { redirect_to '' , notice: 'File will successfully uploaded' }
-      end
-    end
-    #respond_with(@document)
+
+    #@document.save
+
+
+    respond_with(@document)
   end
 
   def update

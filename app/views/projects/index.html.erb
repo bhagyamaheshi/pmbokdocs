@@ -12,7 +12,6 @@
       <table class="table">
         <thead>
         <tr>
-          <th>Projectid</th>
           <th>Projectname</th>
           <th>Description</th>
           <th>Startdate</th>
@@ -24,7 +23,6 @@
         <tbody>
         <% @projects.each do |project| %>
             <tr>
-              <td><%= project.id %></td>
               <td><%= project.projectName %></td>
               <td><%= project.description %></td>
               <td><%= project.startDate %></td>
