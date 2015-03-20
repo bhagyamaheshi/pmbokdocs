@@ -1,6 +1,6 @@
 <div id="project Details" class="col-md-4">
   <h2><%= @project.projectName %></h2><br/>
-  <h3><%= link_to "Documents", documents_path%><br/>
+  <h3><%= link_to "Documents", documents_path(:project_id => @project.id) %><br/>
   <%= link_to "Activities", activities_path %></br>
   <%= link_to "Issues", issues_path %></h3><br/>
 </div>

@@ -19,8 +19,8 @@
       <tbody>
         <% @document_categories.each do |documentCategory| %>
           <tr>
-            <td><%= link_to documentCategory.categoryName, document %></td>
-            <td><% link_to 'Destroy', documentCategory, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to documentCategory.categoryName,:controller => :documents, :action => :show,
+                            :documentCategoryId => documentCategory.id, :projectId => @project_id %></td>
           </tr>
       <% end %>
     </tbody>
