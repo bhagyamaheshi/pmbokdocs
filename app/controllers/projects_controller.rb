@@ -24,7 +24,6 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     @project.save
-    Asd
     @project.users.create(id: :user_ids)
 
     #collection_ids.each do |user_id| # assuming collection_ids is an array
