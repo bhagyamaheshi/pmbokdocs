@@ -1,5 +1,7 @@
 <div id="new_project" class="col-md-4">
   <h3><%= link_to 'New Activity', new_activity_path %></h3>
+<br/>
+<%= link_to 'Back', projects_path, :class => "btn btn-default" %>
 </div>
 
 <div id="all_projects" class="col-md-4">
@@ -21,7 +23,7 @@
         <tbody>
         <% @activities.each do |activity| %>
             <tr>
-              <td><%= activity.activityId %></td>
+              <td><%= activity.id %></td>
               <td><%= activity.activityName %></td>
               <td><%= link_to 'Show', activity %></td>
 

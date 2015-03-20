@@ -1,7 +1,9 @@
 <div id="new_project" class="col-md-4">
   <h3><%= link_to 'New Issue', new_issue_path %></h3>
+  <br/>
+  <%= link_to 'Back', projects_path, :class => "btn btn-default" %>
 </div>
-<div id="all_projects" class="col-md-4">
+<div id="all_projects" class="col-md-6">
   <div class="container">
     <div class="page-header">
       <h1>Listing issues</h1>
@@ -20,7 +22,7 @@
         <tbody>
         <% @issues.each do |issue| %>
             <tr>
-              <td><%= issue.issueId %></td>
+              <td><%= issue.id %></td>
               <td><%= issue.issueName %></td>
               <td><%= link_to 'Show', issue %></td>
 
@@ -33,4 +35,3 @@
     </div>
   </div>
 </div>
-

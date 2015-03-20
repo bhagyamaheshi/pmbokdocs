@@ -1,29 +1,47 @@
-<div id="containter">
-<p>
-  <strong>Projectid:</strong>
-  <%= @project.projectId %>
-</p>
+<div id="project Details" class="col-md-4">
+  <h2><%= @project.projectName %></h2><br/>
+  <h3><%= link_to "Documents", documents_path%><br/>
+  <%= link_to "Activities", activities_path %></br>
+  <%= link_to "Issues", issues_path %></h3><br/>
+  <%= link_to 'Edit', edit_project_path(@project), :class => "btn btn-default" %> |
+  <%= link_to 'Back', projects_path, :class => "btn btn-default" %>
+</div>
 
-<p>
-  <strong>Projectname:</strong>
-  <%= @project.projectName %>
-</p>
+<div id="project" class="col-md-4">
 
-<p>
-  <strong>Description:</strong>
-  <%= @project.description %>
-</p>
+</div>
+<div id="project" class="col-md-4">
+  <table class="table">
+    <tr>
+      <th>Description</th>
+      <td><%= @project.description %></td>
+    </tr>
+    <tr>
+      <th>Start Date:</th>
+      <td><%= @project.startDate %></td>
+    </tr>
+    <tr>
+      <th>Expected Completion Date:</th>
+      <td><%= @project.endDate %></td>
+    </tr>
+  </table>
+  <br/>
+  <h4>Project Team </h4>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>User ID</th>
+        <th>User Name</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @project.users.each do |team| %>
+        <tr>
+          <td><%= team.id %></td>
+        </tr>
+   <% end %>
+</tbody>
+</table>
+<br/>
 
-<p>
-  <strong>Startdate:</strong>
-  <%= @project.startDate %>
-</p>
-
-<p>
-  <strong>Enddate:</strong>
-  <%= @project.endDate %>
-</p>
-
-<%= link_to 'Edit', edit_project_path(@project), :class => "btn btn-default" %> |
-<%= link_to 'Back', projects_path, :class => "btn btn-default" %>
 </div>

@@ -37,6 +37,14 @@ gem 'bootstrap-sass'
 gem 'bootstrap-generators'
 gem 'autoprefixer-rails'
 
+# developent
+group :development do
+  gem 'better_errors'
+  # for chrome plugin 'rails plugin'
+  gem 'meta_request' # chrome extension: http://goo.gl/hM1ekO
+  gem 'binding_of_caller' # provides a live shell on error page
+  gem 'hirb'
+end
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
