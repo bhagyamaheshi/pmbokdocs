@@ -3,8 +3,6 @@
   <h3><%= link_to "Documents", documents_path%><br/>
   <%= link_to "Activities", activities_path %></br>
   <%= link_to "Issues", issues_path %></h3><br/>
-  <%= link_to 'Edit', edit_project_path(@project), :class => "btn btn-default" %> |
-  <%= link_to 'Back', projects_path, :class => "btn btn-default" %>
 </div>
 
 <div id="project" class="col-md-4">
@@ -44,5 +42,7 @@
 </tbody>
 </table>
 <br/>
+<%= link_to 'Edit Project Details', edit_project_path(@project), :class => "btn btn-default" %> |
+  <%= link_to 'Project List', projects_path, :class => "btn btn-default" %>
 
 </div>
