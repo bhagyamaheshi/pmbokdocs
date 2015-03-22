@@ -7,7 +7,7 @@ class DocumentsController < ApplicationController
   def index
     #@documents = Document.all
     @document_categories = DocumentCategory.all
-    @project_id = params[:project_id]
+    @projectId = params[:projectId]
     #respond_with(@document_categories)
   end
 
