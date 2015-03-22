@@ -9,8 +9,10 @@ Rails.application.routes.draw do
 
   resources :activities
 
+  resources :project_teams
+
   resources :projects do
-    resources :project_teams
+    resource :users
   end
 
   devise_for :users
