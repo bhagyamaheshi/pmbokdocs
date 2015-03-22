@@ -1,19 +1,26 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-
-</p>
-
-<p>
-  <strong>Description:</strong>
-
-</p>
-
-<p>
-  <strong>Filelocation:</strong>
-
-</p>
-
-<%= link_to 'Edit', 'edit_document_path(@document)' %> |
-<%= link_to 'Back', 'documents_path' %>
+<div id="new_document" class="col-md-4">
+	<div class="container">
+		<div class="page-header">
+			<% @documentName.each do |name| %>
+      			<h1><%= name.categoryName %></h1>
+      		<% end %>
+      		<table>
+      			<thead>
+        			<tr>
+          				<th>All versions</th>
+          				<th colspan="3"></th>
+        			</tr>
+      			</thead>
+      			<tbody>
+        			<% @documentList.each do |list| %>
+          			<tr>
+            			<td><%= link_to 'Version '+list.versions,'#' %></td>
+          			</tr>
+      				<% end %>
+    			</tbody>
+			</table>
+    	</div>
+	</div>
+</div>

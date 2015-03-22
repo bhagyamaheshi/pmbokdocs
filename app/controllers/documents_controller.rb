@@ -12,8 +12,10 @@ class DocumentsController < ApplicationController
   end
 
   def show
-    #respond_with(@document)
-    if @documentList = Document.where('document_category_id = ? AND project_id = ?', params[:documentCategoryId], params[:project_id]) != nil
+    @documentName = DocumentCategory.where('id = ?', params[:documentCategoryId])
+    @documentList = Document.where('document_category_id = ? AND project_id = ?', params[:documentCategoryId], params[:project_id]).order('created_at DESC')
+    if @documentList != nil
+      #respond_with(@documentList)
     else
       print "test"
     end
@@ -43,14 +45,6 @@ class DocumentsController < ApplicationController
     respond_with(@document)
   end
 
-  def documentListOfDocumentCategory
-
-    if @documentList = Document.where('document_category_id =?', params[:documentCategoryId]) != nil
-
-    else
-      put "dsf"
-    end
-  end
 
   private
     def set_document

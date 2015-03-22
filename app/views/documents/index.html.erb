@@ -20,7 +20,7 @@
         <% @document_categories.each do |documentCategory| %>
           <tr>
             <td><%= link_to documentCategory.categoryName,:controller => :documents, :action => :show,
-                            :documentCategoryId => documentCategory.id, :projectId => @project_id %></td>
+                            :projectId => @project_id, :documentCategoryId => documentCategory.id %></td>
           </tr>
       <% end %>
     </tbody>
