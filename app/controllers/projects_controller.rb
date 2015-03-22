@@ -24,12 +24,6 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     @project.save
-  #  @project.users.create(:id => project_params[:id])
-
-  #  u = params[:user_ids]
-    #  u.each do |id|
-      #  @project.users.create(:id => id)
-  #   end
 
     #collection_ids.each do |user_id| # assuming collection_ids is an array
       #user = User.find(user_id)
