@@ -5,7 +5,6 @@ class DocumentsController < ApplicationController
   respond_to :html
 
   def index
-    #@documents = Document.all
     @document_categories = DocumentCategory.all
     @projectId = params[:projectId]
     #respond_with(@document_categories)
