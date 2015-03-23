@@ -24,12 +24,12 @@
 			<%= link_to 'Upload', new_document_path(:projectId => params[:projectId], :documentCategoryId => params[:documentCategoryId]), :class => "btn btn-default" %>
  
     	</div>
-      
-        <%= form_tag '/upload', multipart: true do %>
-          <label>File to Upload</label> 
-          <%= file_field_tag 'file', class: 'upload' %>
-          <%= submit_tag %>
-        <% end %>
+
+      <%= form_for @uploadDocument, :url => document_path, :html => { :multipart => true } do |form| %>
+        <% form.hidden_field(:projectId, params[:projectId]) %>
+        <% form.hidden_field(:documentCategoryId, params[:documentCategoryId]) %>
+        <%= form.file_field :file %>
+      <% end %>
 
 	</div>
 </div>
