@@ -13,12 +13,12 @@ class DocumentsController < ApplicationController
   def show
     @documentName = DocumentCategory.where('id = ?', params[:documentCategoryId])
     @documentList = Document.where('document_category_id = ? AND project_id = ?', params[:documentCategoryId], params[:projectId]).order('created_at DESC')
-
   end
 
   def new
-    @document = Document.new
-    respond_with(@document)
+    #@document = Document.new
+    #@uploadDocument = Document.new(document_params)
+    #respond_with(@document)
   end
 
   def edit
@@ -47,7 +47,7 @@ class DocumentsController < ApplicationController
     end
 
     def document_params
-      params.require(:document).permit(:title, :description, :fileLocation, :file, :document_category_id, :project_id)
+      params.require(:document).permit(:title, :description, :fileLocation, :file, :document_category_id, :project_id, :documentCategoryId, :projectId)
     end
 
 end

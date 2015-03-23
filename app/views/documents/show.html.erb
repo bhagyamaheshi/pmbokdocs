@@ -20,7 +20,16 @@
       				<% end %>
     			</tbody>
 			</table>
-			<%= link_to 'Document List', documents_path, :class => "btn btn-default" %>
+
+			<%= link_to 'Upload', new_document_path(:projectId => params[:projectId], :documentCategoryId => params[:documentCategoryId]), :class => "btn btn-default" %>
+ 
     	</div>
+      
+        <%= form_tag '/upload', multipart: true do %>
+          <label>File to Upload</label> 
+          <%= file_field_tag 'file', class: 'upload' %>
+          <%= submit_tag %>
+        <% end %>
+
 	</div>
 </div>
