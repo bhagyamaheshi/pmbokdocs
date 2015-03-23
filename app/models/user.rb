@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_many :projects, through: :project_team
+  has_many :project_teams
+  has_many :projects, through: :project_teams
   belongs_to :role
 end

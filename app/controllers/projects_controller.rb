@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
   respond_to :html
 
   def index
-    @projects = Project.all
+    @projects = Project.all.order('created_at DESC')
     respond_with(@projects)
   end
 
@@ -24,7 +24,12 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     @project.save
-    @project.users.create(id: :user_ids)
+  #  @project.users.create(:id => project_params[:id])
+
+  #  u = params[:user_ids]
+    #  u.each do |id|
+      #  @project.users.create(:id => id)
+  #   end
 
     #collection_ids.each do |user_id| # assuming collection_ids is an array
       #user = User.find(user_id)
@@ -51,7 +56,7 @@ class ProjectsController < ApplicationController
     end
 
     def project_params
-      params.require(:project).permit(:projectId, :projectName, :description, :startDate, :endDate)
+      params.require(:project).permit(:projectName, :description, :startDate, :endDate)
     end
     def collection_ids
       params.require(:project).permit(:user_id)

@@ -9,9 +9,9 @@ Rails.application.routes.draw do
 
   resources :activities
 
-  resources :projects do
-    resources :project_teams
-  end
+  resources :project_teams
+
+  resources :projects
 
   devise_for :users
 
@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   get 'documents/:documentCategoryId/:projectId' => 'documents#show'
   get 'projects/:projectId' => 'documents#index'
+  get 'projects/:projectId' => 'project_teams#index'
 
   root 'home#index'
 
