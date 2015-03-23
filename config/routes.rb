@@ -11,7 +11,13 @@ Rails.application.routes.draw do
 
   resources :project_teams
 
+<<<<<<< HEAD
   resources :projects
+=======
+  resources :projects do
+    resource :users
+  end
+>>>>>>> a884c8ee16137d67c2768ecc6d15b487996d9e9f
 
   devise_for :users
 
