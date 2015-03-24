@@ -1,19 +1,18 @@
 <div id="project Details" class="col-md-4">
-  <h2>Project :<%= @project.projectName %></h2><br/>
+  <h3>Project :<%= @project.projectName %></h3><br/>
   <table class = "table table-striped">
     <tr>
-      <td><h3><%= link_to "Create Project Team", project_teams_path(:projectId => @project.id) %>
+      <td><h4><%= link_to "Create Project Team", project_teams_path(:projectId => @project.id) %></h4></td>
     </tr>
     <tr>
-      <td><h3><%= link_to "Documents", documents_path(:projectId => @project.id) %></h3></td>
+      <td><h4><%= link_to "Documents", documents_path(:projectId => @project.id) %></h4></td>
     </tr>
     <tr>
-      <td><h3><%= link_to "Activities", activities_path %></h3></td>
+      <td><h4><%= link_to "Activities", activities_path %></h4></td>
     </tr>
     <tr>
-      <td><h3><%= link_to "Issues", issues_path %></h3></td>
+      <td><h4><%= link_to "Issues", issues_path %></h4></td>
     </tr>
-  </h3>
  </table>
 </div>
 

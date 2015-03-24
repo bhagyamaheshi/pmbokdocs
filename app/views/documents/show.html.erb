@@ -7,8 +7,8 @@
 					<table class="table table-bordered">
       			<thead>
         			<tr>
-          				<th>Version</th>
-          				<th>Location</th>
+          		  <th>Version</th>
+          			<th>Location</th>
         			</tr>
       			</thead>
       			<tbody>
@@ -18,9 +18,17 @@
             			<td><%= list.fileLocation %></td>
           			</tr>
       				<% end %>
-    			</tbody>
-			</table>
-			<%= link_to 'Document List', documents_path, :class => "btn btn-default" %>
-    	</div>
+    			   </tbody>
+			   </table>
+    </div>
+    <%= form_for(@document) do |form| %>
+      <%= form.hidden_field :project_id, value: params[:projectId] %>
+      <%= form.hidden_field :document_category_id, value: params[:documentCategoryId] %>
+      <%= form.label :file, 'Upload Document:' %><br>
+      <%= form.file_field :file %>
+      <div class="actions">
+        <%= form.submit %>
+      </div>
+    <% end %>
 	</div>
 </div>
