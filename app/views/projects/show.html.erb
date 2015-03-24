@@ -46,8 +46,9 @@
     <% @project.users.each do |team| %>
         <tr>
           <td><%= team.id %></td>
+          <td><%= team.email %></td>
         </tr>
-   <% end %>
+    <% end %>
 </tbody>
 </table>
 <br/>
