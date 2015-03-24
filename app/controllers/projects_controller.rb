@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
   respond_to :html
 
   def index
-    @projects = Project.all.order('created_at DESC')
+    @projects = Project.all.order('created_at ASC')
     respond_with(@projects)
   end
 
