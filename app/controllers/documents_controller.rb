@@ -30,6 +30,13 @@ class DocumentsController < ApplicationController
     @document = Document.new(document_params)
     @document.project_id = params[:document][:project_id]
     @document.document_category_id = params[:document][:document_category_id]
+
+    if documentVersion = Document.where('project_id = ? AND document_category_id = ?', @document.project_id, @document.document_category_id).maximum(:version) != nil
+      @document.verion = documentVersion+=0.1
+    else
+      @document.verion = 1.0
+    end
+
     @document.save
     respond_with(@document)
   end
