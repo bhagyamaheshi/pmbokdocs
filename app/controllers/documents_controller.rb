@@ -11,8 +11,10 @@ class DocumentsController < ApplicationController
   end
 
   def show
+    @document = Document.new
     @documentName = DocumentCategory.where('id = ?', params[:documentCategoryId])
     @documentList = Document.where('document_category_id = ? AND project_id = ?', params[:documentCategoryId], params[:projectId]).order('created_at DESC')
+    #respond_with(@document)
   end
 
   def new
@@ -26,7 +28,9 @@ class DocumentsController < ApplicationController
 
   def create
     @document = Document.new(document_params)
-    #@document.save
+    @document.project_id = params[:document][:project_id]
+    @document.document_category_id = params[:document][:document_category_id]
+    @document.save
     respond_with(@document)
   end
 
