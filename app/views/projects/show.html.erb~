@@ -1,0 +1,61 @@
+<div id="project Details" class="col-md-4">
+  <h2>Project :<%= @project.projectName %></h2><br/>
+  <table class = "table table-striped">
+    <tr>
+<<<<<<< HEAD
+      <td><h3><%= link_to "Create Project Team", project_teams_path(:projectId => @project.id) %>
+=======
+      <td><h3><%= link_to "Create Project team", project_teams_path(:pId => @project.id) %>
+>>>>>>> a884c8ee16137d67c2768ecc6d15b487996d9e9f
+    </tr>
+    <tr>
+      <td><h3><%= link_to "Documents", documents_path(:projectId => @project.id) %></h3></td>
+    </tr>
+    <tr>
+      <td><h3><%= link_to "Activities", activities_path %></h3></td>
+    </tr>
+    <tr>
+      <td><h3><%= link_to "Issues", issues_path %></h3></td>
+    </tr>
+  </h3>
+ </table>
+</div>
+
+<div id="project" class="col-md-6">
+   <h4>Project Details </h4>
+  <table class="table table-bordered">
+    <tr class="success">
+      <th>Description</th>
+      <td><%= @project.description %></td>
+    </tr>
+    <tr class="info">
+      <th>Start Date:</th>
+      <td><%= @project.startDate %></td>
+    </tr>
+    <tr class="warning">
+      <th>Expected Completion Date:</th>
+      <td><%= @project.endDate %></td>
+    </tr>
+  </table>
+  <br/>
+  <h4>Project Team </h4>
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th>User ID</th>
+        <th>User Name</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @project.users.each do |team| %>
+        <tr>
+          <td><%= team.id %></td>
+        </tr>
+   <% end %>
+</tbody>
+</table>
+<br/>
+<%= link_to 'Edit Project Details', edit_project_path(@project), :class => "btn btn-default" %> |
+  <%= link_to 'Project List', projects_path, :class => "btn btn-default" %>
+
+</div>
