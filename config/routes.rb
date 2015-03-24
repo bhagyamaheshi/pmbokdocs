@@ -11,8 +11,6 @@ Rails.application.routes.draw do
 
   resources :project_teams
 
-<<<<<<< HEAD
-
   resources :projects
 
   devise_for :users
