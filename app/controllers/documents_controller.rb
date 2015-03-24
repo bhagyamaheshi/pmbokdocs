@@ -12,8 +12,14 @@ class DocumentsController < ApplicationController
 
   def show
     @document = Document.new
-    @documentName = DocumentCategory.where('id = ?', params[:documentCategoryId])
+
+    temp = DocumentCategory.select(:categoryName).where('id = ?', params[:documentCategoryId])
+    temp.each do |name|
+      @categoryName = name.categoryName
+    end
+
     @documentList = Document.where('document_category_id = ? AND project_id = ?', params[:documentCategoryId], params[:projectId]).order('created_at DESC')
+
     #respond_with(@document)
   end
 
