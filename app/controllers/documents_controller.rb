@@ -34,12 +34,17 @@ class DocumentsController < ApplicationController
     documentVersion = Document.select(:version).where('project_id = ? AND document_category_id = ?', @document.project_id, @document.document_category_id).maximum(:version)
     documentVersionMinor = Document.select(:versionMinor).where('project_id = ? AND document_category_id = ?', @document.project_id, @document.document_category_id).maximum(:versionMinor)
     
-    if params[:versionType] == "major"
-      @document.version = documentVersion.to_i+1
-      @document.versionMinor = 0
+    if documentVersion != nil
+      if params[:versionType] == "major"
+        @document.version = documentVersion.to_i+1
+        @document.versionMinor = 0
+      else
+        @document.version = documentVersion.to_i
+        @document.versionMinor = documentVersionMinor.to_i+1
+      end
     else
-      @document.version = documentVersion.to_i
-      @document.versionMinor = documentVersionMinor.to_i+1
+      @document.version = 1
+      @document.versionMinor = 0
     end
 
     @document.save
