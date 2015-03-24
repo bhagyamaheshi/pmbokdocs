@@ -12,12 +12,14 @@
         			</tr>
       			</thead>
       			<tbody>
+              <% if @documentList != nil %>
         			<% @documentList.each do |list| %>
           			<tr>
-            			<td><%= link_to "Version " + list.version.to_s,'#' %></td>
+            			<td><%= link_to list.version.to_s+"."+list.versionMinor.to_s,'#' %></td>
             			<td><%= list.fileLocation %></td>
           			</tr>
       				<% end %>
+              <% end %>
     			   </tbody>
 			   </table>
     </div>
@@ -25,6 +27,10 @@
       <%= form.hidden_field :project_id, value: params[:projectId] %>
       <%= form.hidden_field :document_category_id, value: params[:documentCategoryId] %>
       <%= form.label :file, 'Upload Document:' %><br>
+      <%= label_tag(:versionTypeMajor, "Major") %>
+      <%= radio_button_tag(:versionType, "major") %>
+      <%= label_tag(:versionTypeMinor, "Minor") %>
+      <%= radio_button_tag(:versionType, "minor") %>
       <%= form.file_field :file %>
       <div class="actions">
         <%= form.submit %>

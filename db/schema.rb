@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150322055859) do
+ActiveRecord::Schema.define(version: 20150324133638) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,7 +52,8 @@ ActiveRecord::Schema.define(version: 20150322055859) do
     t.string   "file_content_type"
     t.integer  "file_file_size"
     t.datetime "file_updated_at"
-    t.float    "version"
+    t.integer  "version"
+    t.integer  "versionMinor"
   end
 
   add_index "documents", ["document_category_id"], name: "index_documents_on_document_category_id", using: :btree
