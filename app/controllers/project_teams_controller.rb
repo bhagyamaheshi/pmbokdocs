@@ -7,8 +7,11 @@ class ProjectTeamsController < ApplicationController
   def create
     @project = Project.find(params[:project_team][:project_id])
     #@team = ProjectTeam.new(:user_id => project_params[:id],:project_id => params[:projectId])
-    @team = @project.project_teams.create(:user_id => params[:project_team][:user_id],:project_id => params[:project_team][:project_id])
-    @team.save
+    if @team = @project.project_teams.create(:user_id => params[:project_team][:user_id],:project_id => params[:project_team][:project_id])
+      :flash[:notice] = "The user is already exist!!"
+    else
+      @team.save
+    end
     redirect_to project_path(@project)
   end
 
