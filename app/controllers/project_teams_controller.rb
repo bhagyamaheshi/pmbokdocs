@@ -2,17 +2,22 @@ class ProjectTeamsController < ApplicationController
   def index
     @project = Project.find(params[:projectId])
     @projectTeam = ProjectTeam.new
+    #@test = @project.users
   end
 
   def create
     @project = Project.find(params[:project_team][:project_id])
-    #@team = ProjectTeam.new(:user_id => project_params[:id],:project_id => params[:projectId])
-    if @team = @project.project_teams.create(:user_id => params[:project_team][:user_id],:project_id => params[:project_team][:project_id])
-      :flash[:notice] = "The user is already exist!!"
-    else
-      @team.save
-    end
+    projectTeam = ProjectTeam.new
+    projectTeam.user_id = params[:project_team][:user_id]
+    projectTeam.project_id = params[:project_team][:project_id]
+    
+    projectTeam.save
     redirect_to project_path(@project)
+    
+    rescue => e
+      flash[:error] = "The user is already exist"
+      redirect_to project_path(@project)
+
   end
 
   private
