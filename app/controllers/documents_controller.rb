@@ -54,7 +54,7 @@ class DocumentsController < ApplicationController
     end
 
     @document.save
-    respond_with(@document)
+    redirect_to :action => 'show', :documentCategoryId => @document.document_category_id, :projectId => @document.project_id
   end
 
   def update
