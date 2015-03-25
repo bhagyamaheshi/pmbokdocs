@@ -11,13 +11,12 @@ class ProjectTeamsController < ApplicationController
     projectTeam.user_id = params[:project_team][:user_id]
     projectTeam.project_id = params[:project_team][:project_id]
     
-    projectTeam.save
-    redirect_to project_path(@project)
-    
-    rescue => e
+    begin
+      projectTeam.save
+    rescue Exception => e
       flash[:error] = "The user is already exist"
+    end
       redirect_to project_path(@project)
-
   end
 
   private
