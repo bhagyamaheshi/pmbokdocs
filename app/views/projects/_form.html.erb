@@ -1,3 +1,11 @@
+  <script>
+    $(function() {
+      $('#project_startDate').datepicker();
+      $('#project_endDate').datepicker();
+    });
+  </script>
+
+
 <%= form_for(@project) do |f| %>
   <% if @project.errors.any? %>
     <div id="error_explanation">
@@ -20,7 +28,7 @@
   </div>
   <div class="form-group">
     <div class="col-lg-3"><%= f.label :startDate %></div>
-    <div class="col-lg-9"><%= f.date_select :startDate,:class => "form-control" %></div>
+    <div class="col-lg-9"><%= f.date_select :startDate, :class => "form-control" %></div>
   </div>
   <div class="form-group">
     <div class="col-lg-3"><%= f.label :endDate %></div>
