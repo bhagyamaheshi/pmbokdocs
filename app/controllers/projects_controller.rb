@@ -26,6 +26,7 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     @project.save
+    @project.project_teams.create(:user_id => current_user.id ,:project_id => @project.id)
 
     #collection_ids.each do |user_id| # assuming collection_ids is an array
       #user = User.find(user_id)
