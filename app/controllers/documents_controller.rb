@@ -7,7 +7,6 @@ class DocumentsController < ApplicationController
   def index
     @document_categories = DocumentCategory.all
     @projectId = params[:projectId]
-    #respond_with(@document_categories)
   end
 
   def show
@@ -19,14 +18,9 @@ class DocumentsController < ApplicationController
     end
 
     @documentList = Document.where('document_category_id = ? AND project_id = ?', params[:documentCategoryId], params[:projectId]).order('created_at DESC')
-
-    #respond_with(@document)
   end
 
   def new
-    #@document = Document.new
-    #@uploadDocument = Document.new(document_params)
-    #respond_with(@document)
   end
 
   def edit
@@ -39,7 +33,12 @@ class DocumentsController < ApplicationController
 
     documentVersion = Document.select(:version).where('project_id = ? AND document_category_id = ?', @document.project_id, @document.document_category_id).maximum(:version)
     documentVersionMinor = Document.select(:versionMinor).where('project_id = ? AND document_category_id = ?', @document.project_id, @document.document_category_id).maximum(:versionMinor)
-    
+
+    temp = DocumentCategory.select(:categoryName).where('id = ?', @document.document_category_id)
+    temp.each do |name|
+      @documentCategoryName = name.categoryName
+    end
+
     if documentVersion != nil
       if params[:versionType] == "major"
         @document.version = documentVersion.to_i+1
@@ -53,8 +52,12 @@ class DocumentsController < ApplicationController
       @document.versionMinor = 0
     end
 
+    @document.documentName(@documentCategoryName)
     @document.save
-    redirect_to :action => 'show', :documentCategoryId => @document.document_category_id, :projectId => @document.project_id
+
+    redirect_to :action => 'show',
+                :documentCategoryId => @document.document_category_id,
+                :projectId => @document.project_id
   end
 
   def update
