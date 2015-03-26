@@ -1,19 +1,13 @@
-<div id="user_login" class="col-md-4">
+<div id="user_login" class="col-md-3">
   <div id="container">
     <div id="user_status">
-      <% if user_signed_in? %>
-          Welcome <%= current_user.email %>! Not you?
-          <h3><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></h3>
-      <% else %>
-          <h3><% link_to "Sign up", new_user_registration_path %>
-          <%= link_to "Sign in", new_user_session_path %></h3>
-      <% end %>
+        <%= render 'login'%>
     </div>
     </div>
   <div style="height:500px;" id="map­canvas"></div>
 </div>
 
-<div class="col-md-8">
+<div class="col-md-9">
   <h2><img src ="/logo.png" height = "100"> PMBOK Docs</h2><br/>
   <p align="justify"><h4>PMCOK Docs is an Integrated Project Management System mainly focusing on the management of documents in your project.
   It will allow you to create a new project and manage it smoothly and properly.
