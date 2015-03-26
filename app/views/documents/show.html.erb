@@ -7,6 +7,7 @@
       			<thead>
         			<tr>
           		        <th>Version</th>
+                        <th>Description</th>
           			    <th>Created Date</th>
         			</tr>
       			</thead>
@@ -14,7 +15,8 @@
               <% if @documentList != nil %>
         			<% @documentList.each do |list| %>
           			<tr>
-            			<td><%= link_to @documentCategoryName+' v'+list.version.to_s+'.'+list.versionMinor.to_s, ':rails_root.url' %></td>
+            			<td><%= link_to @documentCategoryName+' v'+list.version.to_s+'.'+list.versionMinor.to_s, list.file.url %></td>
+                        <td><%= list.description %></td>
             			<td><%= list.created_at.to_formatted_s(:long_ordinal) %></td>
           			</tr>
       				<% end %>
@@ -25,11 +27,12 @@
     <%= form_for(@document) do |form| %>
       <%= form.hidden_field :project_id, value: params[:projectId] %>
       <%= form.hidden_field :document_category_id, value: params[:documentCategoryId] %>
-      <%= form.label :file, 'Upload Document:' %><br>
+      <%= form.label :file, 'Upload Document:' %><br/>
           <%= radio_button_tag(:versionType, "major", checked = false) %>
           <%= label_tag(:versionTypeMajor, "Major") %> &nbsp&nbsp&nbsp&nbsp
           <%= radio_button_tag(:versionType, "minor", checked = true) %>
-          <%= label_tag(:versionTypeMinor, "Minor") %>
+          <%= label_tag(:versionTypeMinor, "Minor") %> <br/>
+          <%= form.text_area :description %>
           <%= form.file_field :file %>
       <div class="actions">
         <%= form.submit %>

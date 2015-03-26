@@ -27,6 +27,8 @@ class DocumentsController < ApplicationController
     @document = Document.new(document_params)
     @document.project_id = params[:document][:project_id]
     @document.document_category_id = params[:document][:document_category_id]
+    @document.fileLocation = params[:document][:file].path
+    @document.description = params[:document][:description]
 
     documentVersion = Document.select(:version).where('project_id = ? AND document_category_id = ?', @document.project_id, @document.document_category_id).maximum(:version)
     documentVersionMinor = Document.select(:versionMinor).where('project_id = ? AND document_category_id = ?', @document.project_id, @document.document_category_id).maximum(:versionMinor)

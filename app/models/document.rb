@@ -4,9 +4,7 @@ class Document < ActiveRecord::Base
 
   before_save :renameFile
 
-  has_attached_file :file,
-                    :path => ':rails_root/non-public/document/:file/:projectId/:documentCategoryId/:basename.:extension',
-                    :url => '/:class/:projectId/:documentCategoryId/:file'
+  has_attached_file :file
 
   validates_attachment :file, :content_type => { :content_type => %w(application/pdf application/msword application/vnd.openxmlformats-officedocument.wordprocessingml.document) }
 
