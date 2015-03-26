@@ -1,0 +1,38 @@
+
+<div id="all_projects" class="col-md-6">
+  <div class="container">
+    <div class="page-header">
+      <h1>Listing projects</h1>
+    </div>
+    <br/>
+    <div class="row">
+      <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th>Projectname</th>
+          <th>Startdate</th>
+          <th>Enddate</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <% @projects.each do |project| %>
+            <tr>
+              <td><%= link_to project.projectName, project %></td>
+              <td><%= project.startDate %></td>
+              <td><%= project.endDate %></td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+      <% if current_user.role_id == 1 %>
+<<<<<<< HEAD
+      <div class="col-lg-12 text-right"><%= link_to 'New Project', new_project_path,:class => "btn btn-default" %></div>
+=======
+      <%= link_to 'New Project', new_project_path,:class => "btn btn-default" %>
+>>>>>>> 1bf858a449d2420c906ca1eb770fec9a42928cc5
+      <% end %>
+    </div>
+  </div>
+  <br>
+</div>
