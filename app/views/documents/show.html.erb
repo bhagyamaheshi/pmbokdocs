@@ -1,8 +1,25 @@
-<div id="new_project" class="col-md-4">
+<div id="new_project" class="col-md-3">
+	<%= form_for(@document) do |form| %>
+		<%= form.hidden_field :project_id, value: params[:projectId] %>
+		<%= form.hidden_field :document_category_id, value: params[:documentCategoryId] %>
+		<h2> Upload Document </h2><br/>
+				<%= radio_button_tag(:versionType, "major", checked = false) %>
+				<%= label_tag(:versionTypeMajor, "Major") %> &nbsp&nbsp&nbsp&nbsp
+				<%= radio_button_tag(:versionType, "minor", checked = true) %>
+				<%= label_tag(:versionTypeMinor, "Minor") %> <br/>
+				<%= form.text_area :description, :class => "form-control" %>
+				<br/>
+				<%= form.file_field :file %>
+				<br/>
+		<div class="actions">
+			<%= form.submit :class => "btn btn-success" %>
+		</div>
+	<% end %>
+</div>
+<div id="new_project" class="col-md-5">
 	<div class="container">
 		<div class="page-header">
       		<h1><%= @documentCategoryName %></h1>
-
 					<table class="table table-bordered">
       			<thead>
         			<tr>
@@ -24,20 +41,7 @@
     			   </tbody>
 			   </table>
     </div>
-    <%= form_for(@document) do |form| %>
-      <%= form.hidden_field :project_id, value: params[:projectId] %>
-      <%= form.hidden_field :document_category_id, value: params[:documentCategoryId] %>
-      <%= form.label :file, 'Upload Document:' %><br/>
-          <%= radio_button_tag(:versionType, "major", checked = false) %>
-          <%= label_tag(:versionTypeMajor, "Major") %> &nbsp&nbsp&nbsp&nbsp
-          <%= radio_button_tag(:versionType, "minor", checked = true) %>
-          <%= label_tag(:versionTypeMinor, "Minor") %> <br/>
-          <%= form.text_area :description %>
-          <%= form.file_field :file %>
-      <div class="actions">
-        <%= form.submit %>
-      </div>
-    <% end %>
+		<%= link_to 'Document Category List', projects_path, :class =>"btn btn-info" %>
 	</div>
 </div>
 
