@@ -16,12 +16,20 @@
 			<%= form.submit :class => "btn btn-success" %>
 		</div>
 	<% end %>
+<<<<<<< HEAD
  </div>
 <div id="new_project" class="col-md-6">
 	<div class="container">
 		<div class="page-header">
       		<h3>Version History</h3>
-		<table class="table table-bordered">
+=======
+</div>
+<div id="new_project" class="col-md-5">
+	<div class="container">
+		<div class="page-header">
+      		<h1><%= @documentCategoryName %></h1>
+>>>>>>> 05b2783319501756ead61fec52042dad065ac05e
+					<table class="table table-bordered">
       			<thead>
         			<tr>
           		   <th class="col-md-2">Version</th>
