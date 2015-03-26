@@ -31,20 +31,20 @@
   </table>
   <br/>
   <div class="col-lg-12 text-right"><%= link_to 'Edit Project Details', edit_project_path(@project), :class => "btn btn-default" %> |
-    <%= link_to 'Project List', projects_path, :class => "btn btn-default" %></div>
+    <%= link_to 'Project List', projects_path, :class => "btn btn-info" %></div>
   <br/>
   <h4>Project Team </h4>
     <table class="table table-bordered">
       <thead>
       <tr>
-        <th>User ID</th>
-        <th>User Name</th>
+        <th>Name</th>
+        <th>Email</th>
       </tr>
     </thead>
     <tbody>
     <% @project.users.each do |team| %>
         <tr>
-          <td><%= team.id %></td>
+          <td><%= team.firstName %>&nbsp&nbsp<%= team.lastName %></td>
           <td><%= team.email %></td>
         </tr>
     <% end %>
@@ -52,7 +52,7 @@
 </table>
 <br/>
   <% if current_user.role_id == 1 %>
-    <div class="col-lg-12 text-right"><%= link_to "Create Project Team", project_teams_path(:projectId => @project.id), :class => "btn btn-default" %></div>
+    <div class="col-lg-12 text-right"><%= link_to "Create Project Team", project_teams_path(:projectId => @project.id), :class => "btn btn-success" %></div>
   <% end %>
 <br/>
 
