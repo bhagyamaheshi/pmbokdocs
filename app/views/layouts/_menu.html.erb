@@ -11,11 +11,12 @@
     <div class="collapse navbar-collapse">
       <%= link_to image_tag('/logo.png', height: 40), '#', :id => "logo" %>
       <ul class="nav navbar-nav navbar-right">
-        <li<%= ' class=active' if @home %>><%= link_to "Home", home_index_path %></li>
-          <% if user_signed_in? %>
+        <% if user_signed_in? %>
           <li<%= ' class=active' if @projects %>><%= link_to "Projects", projects_path %></li>
           <li><%= link_to current_user.firstName, edit_user_registration_path %></li>
           <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+        <% else %>
+          <li<%= ' class=active' if @home %>><%= link_to "Home", home_index_path %></li>
       <% end %>
     </ul>
     </div>

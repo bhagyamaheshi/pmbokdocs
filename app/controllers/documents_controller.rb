@@ -11,7 +11,7 @@ class DocumentsController < ApplicationController
 
   def show
     @document = Document.new
-
+    @projectName = Project.find(params[:projectId])
     @documentCategoryName = DocumentCategory.find(params[:documentCategoryId]).categoryName
 
     @documentList = Document.where('document_category_id = ? AND project_id = ?', params[:documentCategoryId], params[:projectId]).order('created_at DESC')

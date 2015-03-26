@@ -2,7 +2,7 @@ class ProjectTeamsController < ApplicationController
   def index
     @project = Project.find(params[:projectId])
     @projectTeam = ProjectTeam.new
-    #@test = @project.users
+    #@team = @project.project_teams
   end
 
   def create
@@ -10,7 +10,7 @@ class ProjectTeamsController < ApplicationController
     projectTeam = ProjectTeam.new
     projectTeam.user_id = params[:project_team][:user_id]
     projectTeam.project_id = params[:project_team][:project_id]
-    
+
     begin
       projectTeam.save
     rescue Exception => e
