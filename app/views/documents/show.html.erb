@@ -1,7 +1,7 @@
 <div id="new_project" class="col-md-4">
 	<div class="container">
 		<div class="page-header">
-      		<h1><%= @categoryName %></h1>
+      		<h1><%= @documentCategoryName %></h1>
 
 					<table class="table table-bordered">
       			<thead>
@@ -14,7 +14,7 @@
               <% if @documentList != nil %>
         			<% @documentList.each do |list| %>
           			<tr>
-            			<td><%= link_to @categoryName+' v'+list.version.to_s+'.'+list.versionMinor.to_s,'#' %></td>
+            			<td><%= link_to @documentCategoryName+' v'+list.version.to_s+'.'+list.versionMinor.to_s, ':rails_root.url' %></td>
             			<td><%= list.created_at.to_formatted_s(:long_ordinal) %></td>
           			</tr>
       				<% end %>
@@ -26,11 +26,11 @@
       <%= form.hidden_field :project_id, value: params[:projectId] %>
       <%= form.hidden_field :document_category_id, value: params[:documentCategoryId] %>
       <%= form.label :file, 'Upload Document:' %><br>
-      <%= label_tag(:versionTypeMajor, "Major") %>
-      <%= radio_button_tag(:versionType, "major", checked = false) %>
-      <%= label_tag(:versionTypeMinor, "Minor") %>
-      <%= radio_button_tag(:versionType, "minor", checked = true) %>
-      <%= form.file_field :file %>
+          <%= radio_button_tag(:versionType, "major", checked = false) %>
+          <%= label_tag(:versionTypeMajor, "Major") %> &nbsp&nbsp&nbsp&nbsp
+          <%= radio_button_tag(:versionType, "minor", checked = true) %>
+          <%= label_tag(:versionTypeMinor, "Minor") %>
+          <%= form.file_field :file %>
       <div class="actions">
         <%= form.submit %>
       </div>

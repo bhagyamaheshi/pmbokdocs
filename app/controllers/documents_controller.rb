@@ -12,10 +12,7 @@ class DocumentsController < ApplicationController
   def show
     @document = Document.new
 
-    temp = DocumentCategory.select(:categoryName).where('id = ?', params[:documentCategoryId])
-    temp.each do |name|
-      @categoryName = name.categoryName
-    end
+    @documentCategoryName = DocumentCategory.find(params[:documentCategoryId]).categoryName
 
     @documentList = Document.where('document_category_id = ? AND project_id = ?', params[:documentCategoryId], params[:projectId]).order('created_at DESC')
   end
@@ -33,11 +30,7 @@ class DocumentsController < ApplicationController
 
     documentVersion = Document.select(:version).where('project_id = ? AND document_category_id = ?', @document.project_id, @document.document_category_id).maximum(:version)
     documentVersionMinor = Document.select(:versionMinor).where('project_id = ? AND document_category_id = ?', @document.project_id, @document.document_category_id).maximum(:versionMinor)
-
-    temp = DocumentCategory.select(:categoryName).where('id = ?', @document.document_category_id)
-    temp.each do |name|
-      @documentCategoryName = name.categoryName
-    end
+    documentCategoryName = DocumentCategory.find(@document.document_category_id).categoryName
 
     if documentVersion != nil
       if params[:versionType] == "major"
@@ -52,7 +45,7 @@ class DocumentsController < ApplicationController
       @document.versionMinor = 0
     end
 
-    @document.documentName(@documentCategoryName)
+    @document.documentName(documentCategoryName)
     @document.save
 
     redirect_to :action => 'show',
