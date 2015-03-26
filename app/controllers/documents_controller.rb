@@ -27,8 +27,10 @@ class DocumentsController < ApplicationController
     @document = Document.new(document_params)
     @document.project_id = params[:document][:project_id]
     @document.document_category_id = params[:document][:document_category_id]
-    @document.fileLocation = params[:document][:file].path
     @document.description = params[:document][:description]
+
+    begin
+    @document.fileLocation = params[:document][:file].path
 
     documentVersion = Document.select(:version).where('project_id = ? AND document_category_id = ?', @document.project_id, @document.document_category_id).maximum(:version)
     documentVersionMinor = Document.select(:versionMinor).where('project_id = ? AND document_category_id = ?', @document.project_id, @document.document_category_id).maximum(:versionMinor)
@@ -46,13 +48,18 @@ class DocumentsController < ApplicationController
       @document.version = 1
       @document.versionMinor = 0
     end
+      documentCategoryName = documentCategoryName+' v'+@document.version.to_s+'.'+@document.versionMinor.to_s
+      @document.documentName(documentCategoryName)
+      @document.save
 
-    @document.documentName(documentCategoryName)
-    @document.save
+    rescue Exception => e
+
+    end
 
     redirect_to :action => 'show',
                 :documentCategoryId => @document.document_category_id,
-                :projectId => @document.project_id
+                :projectId => @document.project_id,
+                notice: 'Successfully uploaded'
   end
 
   def update

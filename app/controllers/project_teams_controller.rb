@@ -2,7 +2,6 @@ class ProjectTeamsController < ApplicationController
   def index
     @project = Project.find(params[:projectId])
     @projectTeam = ProjectTeam.new
-    #@test = @project.users
   end
 
   def create

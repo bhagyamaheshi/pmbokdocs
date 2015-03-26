@@ -7,7 +7,7 @@ class ProjectsController < ApplicationController
   def index
     @user = User.find(current_user.id)
     @projects = @user.projects.all.order('created_at DESC')
-    #@projects = Project.all.order('created_at ASC')
+
     respond_with(@projects)
   end
 
@@ -28,12 +28,6 @@ class ProjectsController < ApplicationController
     @project.save
     @project.project_teams.create(:user_id => current_user.id ,:project_id => @project.id)
 
-    #collection_ids.each do |user_id| # assuming collection_ids is an array
-      #user = User.find(user_id)
-      #@project.project_teams.create(:user_id => user)
-      #@team = ProjectTeam.new (@project.project_teams.create(:user_id => user))
-      #@team.save
-    #end
     respond_with(@project)
   end
 
