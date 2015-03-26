@@ -2,9 +2,6 @@
   <h3>Project :<%= @project.projectName %></h3><br/>
   <table class = "table table-striped">
     <tr>
-      <td><h4><%= link_to "Create Project Team", project_teams_path(:projectId => @project.id) %></h4></td>
-    </tr>
-    <tr>
       <td><h4><%= link_to "Documents", documents_path(:projectId => @project.id) %></h4></td>
     </tr>
     <tr>
@@ -33,6 +30,9 @@
     </tr>
   </table>
   <br/>
+  <div class="col-lg-12 text-right"><%= link_to 'Edit Project Details', edit_project_path(@project), :class => "btn btn-default" %> |
+    <%= link_to 'Project List', projects_path, :class => "btn btn-default" %></div>
+  <br/>
   <h4>Project Team </h4>
     <table class="table table-bordered">
       <thead>
@@ -51,7 +51,9 @@
 </tbody>
 </table>
 <br/>
-<%= link_to 'Edit Project Details', edit_project_path(@project), :class => "btn btn-default" %> |
-  <%= link_to 'Project List', projects_path, :class => "btn btn-default" %>
+  <% if current_user.role_id == 1 %>
+    <div class="col-lg-12 text-right"><%= link_to "Create Project Team", project_teams_path(:projectId => @project.id), :class => "btn btn-default" %></div>
+  <% end %>
+<br/>
 
 </div>

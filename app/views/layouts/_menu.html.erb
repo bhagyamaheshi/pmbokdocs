@@ -10,12 +10,14 @@
     </div>
     <div class="collapse navbar-collapse">
       <%= link_to image_tag('/logo.png', height: 40), '#', :id => "logo" %>
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav navbar-right">
         <li<%= ' class=active' if @home %>><%= link_to "Home", home_index_path %></li>
-        <li<%= ' class=active' if @projects %>><%= link_to "Projects", projects_path %></li>
-        <li><%= link_to "Myprofile", '#'%></li>
-      </ul>
-      </ul>
+          <% if user_signed_in? %>
+          <li<%= ' class=active' if @projects %>><%= link_to "Projects", projects_path %></li>
+          <li><%= link_to current_user.firstName, edit_user_registration_path %></li>
+          <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+      <% end %>
+    </ul>
     </div>
   </div>
 </div>
