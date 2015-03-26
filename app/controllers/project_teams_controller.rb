@@ -9,7 +9,7 @@ class ProjectTeamsController < ApplicationController
     projectTeam = ProjectTeam.new
     projectTeam.user_id = params[:project_team][:user_id]
     projectTeam.project_id = params[:project_team][:project_id]
-    
+
     begin
       projectTeam.save
     rescue Exception => e

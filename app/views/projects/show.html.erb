@@ -37,14 +37,14 @@
     <table class="table table-bordered">
       <thead>
       <tr>
-        <th>User ID</th>
-        <th>User Name</th>
+        <th>Name</th>
+        <th>Email</th>
       </tr>
     </thead>
     <tbody>
     <% @project.users.each do |team| %>
         <tr>
-          <td><%= team.id %></td>
+          <td><%= team.firstName %>&nbsp&nbsp<%= team.lastName %></td>
           <td><%= team.email %></td>
         </tr>
     <% end %>

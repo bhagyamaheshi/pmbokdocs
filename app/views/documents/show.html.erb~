@@ -4,6 +4,10 @@
 	<%= form_for(@document) do |form| %>
 		<%= form.hidden_field :project_id, value: params[:projectId] %>
 		<%= form.hidden_field :document_category_id, value: params[:documentCategoryId] %>
+<<<<<<< HEAD
+
+=======
+>>>>>>> facd99529dabad215c2bb70e499443fa7f6bd40b
 				<%= radio_button_tag(:versionType, "major", checked = false) %>
 				<%= label_tag(:versionTypeMajor, "Major") %> &nbsp&nbsp&nbsp&nbsp
 				<%= radio_button_tag(:versionType, "minor", checked = true) %>
@@ -21,8 +25,11 @@
 	<div class="container">
 		<div class="page-header">
       		<h3>Version History</h3>
-
+<<<<<<< HEAD
+					<table class="table table-bordered">
+=======
 		<table class="table table-bordered">
+>>>>>>> facd99529dabad215c2bb70e499443fa7f6bd40b
       			<thead>
         			<tr>
           		   <th class="col-md-2">Version</th>
