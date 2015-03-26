@@ -5,7 +5,7 @@ class DocumentsController < ApplicationController
   respond_to :html
 
   def index
-    @document_categories = DocumentCategory.all
+    @document_categories = DocumentCategory.all.order('id ASC')
     @projectId = params[:projectId]
   end
 

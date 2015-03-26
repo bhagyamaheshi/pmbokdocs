@@ -5,9 +5,9 @@
 		<%= form.hidden_field :project_id, value: params[:projectId] %>
 		<%= form.hidden_field :document_category_id, value: params[:documentCategoryId] %>
 				<%= radio_button_tag(:versionType, "major", checked = false) %>
-				<%= label_tag(:versionTypeMajor, "Major") %> &nbsp&nbsp&nbsp&nbsp
+				<%= label_tag(:versionTypeMajor, "Major release") %> &nbsp&nbsp&nbsp&nbsp
 				<%= radio_button_tag(:versionType, "minor", checked = true) %>
-				<%= label_tag(:versionTypeMinor, "Minor") %> <br/>
+				<%= label_tag(:versionTypeMinor, "Minor release") %> <br/>
 				<%= form.text_area :description, :class => "form-control" %>
 				<br/>
 				<%= form.file_field :file %>
@@ -43,7 +43,7 @@
     			   </tbody>
 			   </table>
     </div>
-		<%= link_to 'Document Category List', projects_path, :class =>"btn btn-info" %>
+		<%= link_to 'Document Category List', documents_path(:projectId => @projectName.id), :class =>"btn btn-info" %>
 	</div>
 </div>
 
