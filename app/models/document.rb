@@ -4,10 +4,10 @@ class Document < ActiveRecord::Base
 
   before_save :renameFile
 
-  has_attached_file :file, :fileLocation => ':rails_root/tmp/upload/:id/:basename.:extension'
-  validates_attachment :file, :content_type => { :content_type => %w(application/pdf application/msword application/vnd.openxmlformats-officedocument.wordprocessingml.document) }
+  has_attached_file :file,
+                    :path => ':rails_root/non-public/document/:projectId/:documentCategoryId/:basename.:extension'
 
-  #validates_attachment_content_type :file
+  validates_attachment :file, :content_type => { :content_type => %w(application/pdf application/msword application/vnd.openxmlformats-officedocument.wordprocessingml.document) }
 
   def documentName(name)
     @thisName = name.to_s
