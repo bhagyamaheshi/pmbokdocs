@@ -5,10 +5,15 @@ class ProjectsController < ApplicationController
   respond_to :html
 
   def index
-    @user = User.find(current_user.id)
-    @projects = @user.projects.all.order('created_at DESC')
 
-    respond_with(@projects)
+    if params[:search]
+      @projects = Project.where("\"projectName\" like (?)", "%#{params[:search].upcase}%")
+    else
+      @user = User.find(current_user.id)
+      @projects = @user.projects.all.order('created_at DESC')
+      respond_with(@projects)
+    end
+
   end
 
   def show
@@ -26,6 +31,7 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     @project.save
+
     @project.project_teams.create(:user_id => current_user.id ,:project_id => @project.id)
 
     respond_with(@project)

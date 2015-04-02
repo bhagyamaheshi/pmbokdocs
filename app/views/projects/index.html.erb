@@ -4,6 +4,12 @@
     <div class="page-header">
       <h1>Listing projects</h1>
     </div>
+    <%= form_tag projects_path, :method => 'get' do %>
+        <p>
+          <%= text_field_tag :search, params[:search] %>
+          <%= submit_tag "search"%>
+        </p>
+    <% end %>
     <br/>
     <div class="row">
       <table class="table table-bordered">
