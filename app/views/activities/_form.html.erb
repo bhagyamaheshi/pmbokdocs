@@ -10,9 +10,39 @@
       </ul>
     </div>
   <% end %>
+  <%= f.hidden_field :project_id, :value => @project.id %>
+  <%= f.hidden_field :status, :value => "Incomplete" %>
   <div class="form-group">
     <div class="col-lg-3"><%= f.label :activityName %></div>
     <div class="col-lg-9"><%= f.text_field :activityName, :class => "form-control" %></div>
+  </div>
+<br/>
+  <div class="form-group">
+    <div class="col-lg-3"><%= f.label :Activity_Category %></div>
+    <div class="col-lg-9"><%= f.collection_select :activity_category_id, ActivityCategory.all, :id, :activityCategoryName %></div>
+  </div>
+  <br/>
+  <div class="form-group">
+    <div class="col-lg-3"><%= f.label :Document_Category %></div>
+    <div class="col-lg-9"><%= f.collection_select :documentcategories_id, DocumentCategory.all, :id, :categoryName %></div>
+  </div>
+  <br/>
+  <div class="form-group">
+    <div class="col-lg-3"><%= f.label :DueDate %></div>
+    <div class="col-lg-9"><%= f.date_select :dueDate, :class => "form-control" %></div>
+  </div>
+  <br/>
+  <div class="form-group">
+    <div class="col-lg-3"><%= f.label :Priority %></div>
+    <div class="col-lg-9">
+      <%= radio_button_tag(:priority, "Low", checked = true) %><%= label_tag(:priority, "Low") %> &nbsp&nbsp&nbsp&nbsp
+      <%= radio_button_tag(:priority, "Medium", checked = false) %><%= label_tag(:priority, "Medium") %> &nbsp&nbsp&nbsp&nbsp
+      <%= radio_button_tag(:priority, "High", checked = false) %><%= label_tag(:priority, "High") %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-lg-3"><%= f.label :Assigned_To %></div>
+    <div class="col-lg-9"><%= f.collection_select :user_id, @user, :id, :email %></div>
   </div>
   <div class="form-group">
     <div class="col-lg-3"></div>

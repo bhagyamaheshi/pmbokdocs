@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150401174907) do
+ActiveRecord::Schema.define(version: 20150402090140) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,12 +23,20 @@ ActiveRecord::Schema.define(version: 20150401174907) do
     t.string   "status"
     t.integer  "project_id"
     t.integer  "activity_category_id"
+    t.integer  "assignerID"
+    t.date     "dueDate"
+    t.string   "priority"
+    t.integer  "user_id"
+    t.integer  "documentcategories_id"
   end
 
   add_index "activities", ["activity_category_id"], name: "index_activities_on_activity_category_id", using: :btree
+  add_index "activities", ["documentcategories_id"], name: "index_activities_on_documentcategories_id", using: :btree
   add_index "activities", ["project_id"], name: "index_activities_on_project_id", using: :btree
+  add_index "activities", ["user_id"], name: "index_activities_on_user_id", using: :btree
 
   create_table "activity_categories", force: true do |t|
+    t.string   "categoryName"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "activityCategoryName"

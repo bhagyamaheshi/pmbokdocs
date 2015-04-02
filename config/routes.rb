@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   get 'home/index'
 
   get 'documents/:documentCategoryId/:projectId' => 'documents#show'
+  get 'activities/:projectId' =>'documents#show'
+  get 'projects/:projectId' => 'activities#index'
   get 'projects/:projectId' => 'documents#index'
   get 'projects/:projectId' => 'project_teams#index'
 
