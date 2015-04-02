@@ -1,7 +1,7 @@
 <div id="all_projects" class="col-md-4">
   <div class="container">
     <div class="page-header">
-      <h1>Listing activities</h1>
+      <h1>Activity List</h1>
     </div>
     <br/>
     <div class="row">
@@ -16,24 +16,110 @@
         </thead>
 
         <tbody>
-        <% @activities.each do |activity| %>
+        <% if current_user.role_id == 1 %>
+          <% @allactivities.each do |activity| %>
             <tr>
               <td><%= link_to activity.activityName, document_path(:id =>activity.project_id, :projectId => activity.project_id, :documentCategoryId => activity.documentcategories_id)%></td>
               <td><%= activity.status %></td>
               <td><%= activity.dueDate %></td>
               <td><%= activity.priority %></td>
             </tr>
+          <% end %>
+        <% else %>
+          <% @activities.each do |activity| %>
+            <tr>
+              <td><%= link_to activity.activityName, document_path(:id =>activity.project_id, :projectId => activity.project_id, :documentCategoryId => activity.documentcategories_id)%></td>
+              <td><%= activity.status %></td>
+              <td><%= activity.dueDate %></td>
+              <td><%= activity.priority %></td>
+            </tr>
+          <% end %>
         <% end %>
         </tbody>
       </table>
       <br/>
       <div class="col-lg-10 text-right">
         <% if current_user.role_id == 1 %>
-            <%= link_to "Create Activity", new_activity_path(:projectId  => params[:projectId]), :class => "btn btn-success" %> |
+        <!-- Button trigger modal -->
+            <% link_to "Create Activity", new_activity_path(:projectId  => params[:projectId]), :class => "btn btn-success" %>
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">|
+              Create Activity
+            </button>
           </div>
         <% end %>
-        <%= link_to 'Back To Project', projects_path, :class => "btn btn-default" %> </div>
+        <%= link_to 'Back To Project', project_path(:id =>params[:projectId]), :class => "btn btn-default" %> </div>
       <br/>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" style="z-index: 99999;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="myModalLabel">Create Activity</h3>
+      </div>
+
+      <div class="modal-body">
+
+        <%= form_for(@activity) do |f| %>
+          <% if @activity.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@activity.errors.count, "error") %> prohibited this activity from being saved:</h2>
+
+              <ul>
+              <% @activity.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+          <%= f.hidden_field :project_id, :value => @project.id %>
+          <%= f.hidden_field :status, :value => "Incomplete" %>
+          <div class="form-group">
+            <div class="col-lg-6"><%= f.label :activityName %></div>
+            <div class="col-lg-6"><%= f.text_field :activityName, :class => "form-control" %></div>
+          </div>
+        <br/>
+          <div class="form-group">
+            <div class="col-lg-6"><%= f.label :Activity_Category %></div>
+            <div class="col-lg-6"><%= f.collection_select :activity_category_id, ActivityCategory.all, :id, :activityCategoryName %></div>
+          </div>
+          <br/>
+          <div class="form-group">
+            <div class="col-lg-6"><%= f.label :Document_Category %></div>
+            <div class="col-lg-6"><%= f.collection_select :documentcategories_id, DocumentCategory.all, :id, :categoryName %></div>
+          </div>
+          <br/>
+          <div class="form-group">
+            <div class="col-lg-6"><%= f.label :DueDate %></div>
+            <div class="col-lg-6"><%= f.date_select :dueDate, :class => "form-control" %></div>
+          </div>
+          <br/>
+          <div class="form-group">
+            <div class="col-lg-6"><%= f.label :Priority %></div>
+            <div class="col-lg-6">
+              <%= radio_button_tag(:priority, "Low", checked = true) %><%= label_tag(:priority, "Low") %> &nbsp
+              <%= radio_button_tag(:priority, "Medium", checked = false) %><%= label_tag(:priority, "Medium") %> &nbsp
+              <%= radio_button_tag(:priority, "High", checked = false) %><%= label_tag(:priority, "High") %>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-lg-6"><%= f.label :Assigned_To %></div>
+            <div class="col-lg-6"><%= f.collection_select :user_id, @user, :id, :email %></div>
+          </div>
+          <div class="form-group">
+            <div class="col-lg-6"></div>
+            <div class="col-lg-6"><%= f.submit "Create Activity", :class => "btn btn-success" %></div>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="modal-footer">
+
+      </div>
     </div>
   </div>
 </div>

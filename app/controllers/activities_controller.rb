@@ -5,6 +5,10 @@ class ActivitiesController < ApplicationController
   respond_to :html
 
   def index
+    @project = Project.find(params[:projectId])
+    @user = @project.users
+    @activity = Activity.new
+    @allactivities = Activity.where('project_id = ?', params[:projectId])
     @activities = Activity.where('project_id = ?  AND user_id= ?', params[:projectId], current_user.id )
     respond_with(@activities)
   end
