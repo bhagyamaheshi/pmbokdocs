@@ -1,7 +1,7 @@
 <div id="all_projects" class="col-md-4">
   <div class="container">
     <div class="page-header">
-      <h1>Listing activities</h1>
+      <h1>Activity List</h1>
     </div>
     <br/>
     <div class="row">
@@ -16,13 +16,24 @@
         </thead>
 
         <tbody>
-        <% @activities.each do |activity| %>
+        <% if current_user.role_id == 1 %>
+          <% @allactivities.each do |activity| %>
             <tr>
               <td><%= link_to activity.activityName, document_path(:id =>activity.project_id, :projectId => activity.project_id, :documentCategoryId => activity.documentcategories_id)%></td>
               <td><%= activity.status %></td>
               <td><%= activity.dueDate %></td>
               <td><%= activity.priority %></td>
             </tr>
+          <% end %>
+        <% else %>
+          <% @activities.each do |activity| %>
+            <tr>
+              <td><%= link_to activity.activityName, document_path(:id =>activity.project_id, :projectId => activity.project_id, :documentCategoryId => activity.documentcategories_id)%></td>
+              <td><%= activity.status %></td>
+              <td><%= activity.dueDate %></td>
+              <td><%= activity.priority %></td>
+            </tr>
+          <% end %>
         <% end %>
         </tbody>
       </table>
@@ -32,7 +43,7 @@
             <%= link_to "Create Activity", new_activity_path(:projectId  => params[:projectId]), :class => "btn btn-success" %> |
           </div>
         <% end %>
-        <%= link_to 'Back To Project', projects_path, :class => "btn btn-default" %> </div>
+        <%= link_to 'Back To Project', project_path(:id =>params[:projectId]), :class => "btn btn-default" %> </div>
       <br/>
     </div>
   </div>
