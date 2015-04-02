@@ -5,7 +5,7 @@ class ActivitiesController < ApplicationController
   respond_to :html
 
   def index
-    @activities = Activity.all
+    @activities = Activity.where('project_id = ?', params[:projectId])
     respond_with(@activities)
   end
 

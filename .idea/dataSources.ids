@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component name="dataSourceStorage">
-  <data-source source="LOCAL" name="Rails pmbokdocs: development" uuid="52a24aa8-09d6-408a-a541-f8082ac12253">
+  <data-source name="Rails pmbokdocs: development" uuid="52a24aa8-09d6-408a-a541-f8082ac12253">
     <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
   </data-source>
-  <data-source source="LOCAL" name="Rails pmbokdocs: test" uuid="7b47b05a-cf49-469c-a2a7-e3915607e5b0">
+  <data-source name="Rails pmbokdocs: test" uuid="7b47b05a-cf49-469c-a2a7-e3915607e5b0">
     <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
   </data-source>
-  <data-source source="LOCAL" name="Rails pmbokdocs: production" uuid="35a2e450-11a8-4f71-a963-ffb18900270c">
+  <data-source name="Rails pmbokdocs: production" uuid="35a2e450-11a8-4f71-a963-ffb18900270c">
     <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
   </data-source>
 </component>

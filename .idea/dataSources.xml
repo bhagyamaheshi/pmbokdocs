@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="2719941948">
+  <component name="DataSourceManagerImpl" format="xml" hash="4187414171">
     <data-source source="LOCAL" name="Rails pmbokdocs: development" uuid="52a24aa8-09d6-408a-a541-f8082ac12253">
       <driver-ref>postgresql</driver-ref>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
@@ -21,4 +21,3 @@
     </data-source>
   </component>
 </project>
-
