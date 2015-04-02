@@ -36,7 +36,6 @@ ActiveRecord::Schema.define(version: 20150402090140) do
   add_index "activities", ["user_id"], name: "index_activities_on_user_id", using: :btree
 
   create_table "activity_categories", force: true do |t|
-    t.string   "categoryName"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "activityCategoryName"

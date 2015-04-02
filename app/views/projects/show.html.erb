@@ -1,3 +1,13 @@
+<script>
+
+$(document).ready(function() {
+    $('#myModal').appendTo("body");
+});
+
+</script>
+
+
+
 <div id="project Details" class="col-md-4">
   <h3>Project :<%= @project.projectName %></h3><br/>
   <table class = "table table-striped">
@@ -52,8 +62,49 @@
 </table>
 <br/>
   <% if current_user.role_id == 1 %>
-    <div class="col-lg-12 text-right"><%= link_to "Create Project Team", project_teams_path(:projectId => @project.id), :class => "btn btn-success" %></div>
+    <div class="col-lg-12 text-right">
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+        Add Team Member
+      </button>
+    </div>
   <% end %>
 <br/>
 
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" style="z-index: 99999;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="myModalLabel">Select the Project Team</h3>
+      </div>
+
+      <div class="modal-body">
+
+        <%= form_for(@projectTeam) do |f| %>
+            <div class="form-group">
+              <%= f.hidden_field :project_id, :value => @project.id %>
+              <div class="col-lg-3"><%= f.label :Team_Members %></div>
+              <div class="col-lg-3"><%= f.collection_select :user_id, @projectTeamList, :id, :email %></div>
+            </div>
+            <br/>
+            <div class="form-group">
+              <div class="col-lg-3">
+                <%= f.submit "Add Member", :class => "btn btn-default" %>
+              </div>
+              <div class="col-lg-3"></div>
+            </div>
+            <br />
+            <% end %>
+      </div>
+
+      <div class="modal-footer">
+
+      </div>
+    </div>
+  </div>
 </div>

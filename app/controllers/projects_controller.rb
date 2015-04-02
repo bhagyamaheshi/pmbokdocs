@@ -5,6 +5,7 @@ class ProjectsController < ApplicationController
   respond_to :html
 
   def index
+    @project = Project.new
 
     if params[:search]
       @projects = Project.where("\"projectName\" like (?)", "%#{params[:search].upcase}%")
@@ -17,7 +18,9 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    respond_with(@project)
+    @projectTeam = ProjectTeam.new
+    @projectTeamList = User.all.where.not(id: @project.users.collect { |u| u.id } )
+    #respond_with(@project)
   end
 
   def new
