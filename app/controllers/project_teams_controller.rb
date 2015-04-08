@@ -9,11 +9,12 @@ class ProjectTeamsController < ApplicationController
     projectTeam = ProjectTeam.new
     projectTeam.user_id = params[:project_team][:user_id]
     projectTeam.project_id = params[:project_team][:project_id]
-
+    @user = User.find(projectTeam.user_id)
     begin
-      projectTeam.save
+        projectTeam.save
+        Notification.adding_team_member_notification(@project,@user).deliver
     rescue Exception => e
-      flash[:error] = "The user is already exist"
+        flash[:error] = "The user is already exist"
     end
       redirect_to project_path(@project)
   end
