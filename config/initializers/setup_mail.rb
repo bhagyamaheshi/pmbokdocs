@@ -7,4 +7,6 @@ ActionMailer::Base.smtp_settings = {
     :authentication       => "html",
     :enable_starttls_auto => true
 }
+
 ActionMailer::Base.default_url_options[:host] = "localhost:3000"
+
