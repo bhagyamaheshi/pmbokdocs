@@ -8,9 +8,9 @@ Due Date 				          : <%= @activity.dueDate %>
 Priority                  : <%= @activity.priority %>
 Supervisor 				        : <%= @supervisor_user.firstName+' '+@supervisor_user.lastName %>
 
-<a href="http://localhost:3000/activities?projectId=1">Accept</a>
 
-<%= link_to "Accept", activity_path(@activity, :host => "localhost:3000")%>
+
+<%= link_to "Accept", activity_url(1)%>
 
 Best Regards,
 <%= @supervisor_user.firstName %>
