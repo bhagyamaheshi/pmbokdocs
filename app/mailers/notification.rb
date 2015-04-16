@@ -7,10 +7,15 @@ class Notification < ActionMailer::Base
     mail to: 'st116391@ait.asia', subject: '[PmBokDocs]You are assigned to '+@project_mailer.projectName+' project'
   end
 
-  def assigning_team_member_notification
-    #
-    # For sending email notifying an assigned task(Project name, related Document category, deadline, supervisor name)
-    #
+  def assigning_team_member_notification(activity, project)
+    @activity = activity
+    @document_category = DocumentCategory.find(activity.documentcategories_id)
+    @supervisor_user = User.find(activity.assignerID)
+    @user = User.find(activity.user_id)
+    
+    @project = project
+
+    mail to: 'st116391@ait.asia', subject: '[PmBokDocs] New task for '+@project.projectName+' project'
   end
 
 end

@@ -28,10 +28,18 @@ class ActivitiesController < ApplicationController
   end
 
   def create
+    @project = Project.find(params[:activity][:project_id])
     @activity = Activity.new(activity_params)
     @activity.assignerID = current_user.id
     @activity.priority = params[:priority]
+    document_category = DocumentCategory.find(params[:activity][:documentcategories_id])
+    superviser_user = User.find(current_user.id)
+    assigned_user = User.find(params[:activity][:user_id])
+
     @activity.save
+
+    Notification.assigning_team_member_notification(@activity, @project).deliver
+
     redirect_to activities_path(:projectId => params[:activity][:project_id])
   end
 
