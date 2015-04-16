@@ -37,9 +37,7 @@ class ActivitiesController < ApplicationController
     assigned_user = User.find(params[:activity][:user_id])
 
     @activity.save
-
     Notification.assigning_team_member_notification(@activity, @project).deliver
-
     redirect_to activities_path(:projectId => params[:activity][:project_id])
   end
 
