@@ -4,7 +4,7 @@ ActionMailer::Base.smtp_settings = {
     :domain               => "localhost:3000",
     :user_name            => "isdm.pmbokdocs@gmail.com",
     :password             => "pmbokdocs",
-    :authentication       => "plain",
+    :authentication       => "html",
     :enable_starttls_auto => true
 }
 

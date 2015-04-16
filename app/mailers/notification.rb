@@ -12,10 +12,10 @@ class Notification < ActionMailer::Base
     @document_category = DocumentCategory.find(activity.documentcategories_id)
     @supervisor_user = User.find(activity.assignerID)
     @user = User.find(activity.user_id)
-    
+
     @project = project
 
-    mail to: 'st116391@ait.asia', subject: '[PmBokDocs] New task for '+@project.projectName+' project'
+    mail to: 'st115637@ait.asia', subject: '[PmBokDocs] New task for '+@project.projectName+' project'
   end
 
 end
