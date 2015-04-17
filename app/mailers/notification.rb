@@ -16,7 +16,7 @@ class Notification < ActionMailer::Base
     @project = project
     #content_type  "text/html"
 
-    mail to: 'st115637@ait.asia', subject: '[PmBokDocs] New task for '+@project.projectName+' project'
+    mail to: 'st116391@ait.asia', subject: '[PmBokDocs] New task for '+@project.projectName+' project'
   end
 
 end
