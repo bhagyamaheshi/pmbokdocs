@@ -14,7 +14,6 @@ class Notification < ActionMailer::Base
     @user = User.find(activity.user_id)
 
     @project = project
-    #content_type  "text/html"
 
     mail to: 'st116391@ait.asia', subject: '[PmBokDocs] New task for '+@project.projectName+' project'
   end
