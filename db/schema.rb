@@ -11,7 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20150416081834) do
+=======
+
+ActiveRecord::Schema.define(version: 20150422110008) do
+>>>>>>> af09af745b0578db86c12f313788006b98a2ae66
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,8 +67,10 @@ ActiveRecord::Schema.define(version: 20150416081834) do
     t.datetime "file_updated_at"
     t.integer  "version"
     t.integer  "versionMinor"
+    t.integer  "activity_id"
   end
 
+  add_index "documents", ["activity_id"], name: "index_documents_on_activity_id", using: :btree
   add_index "documents", ["document_category_id"], name: "index_documents_on_document_category_id", using: :btree
   add_index "documents", ["project_id"], name: "index_documents_on_project_id", using: :btree
 

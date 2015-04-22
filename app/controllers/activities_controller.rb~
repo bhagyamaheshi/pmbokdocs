@@ -5,24 +5,19 @@ class ActivitiesController < ApplicationController
   respond_to :html
 
   def index
+<<<<<<< HEAD
     @project = Project.find(params[:projectId])
     @user = @project.users
     @activity = Activity.new
+=======
+>>>>>>> 89c685a5f04b9ff723540da2ae47e7b6fa6b8d26
     @allactivities = Activity.where('project_id = ?', params[:projectId])
     @activities = Activity.where('project_id = ?  AND user_id= ?', params[:projectId], current_user.id )
-    #respond_with(@activities)
+    respond_with(@activities)
   end
 
   def show
-    #respond_with(@activity)
-
-    @document = Document.new
-    @projectId = params[:project_id]
-    @activityId = params[:activity_id]
-    @documentCategoryId = params[:document_category_id]
-    @userId = params[:user_id]
-    @status = params[:status]
-
+    respond_with(@activity)
   end
 
   def new
@@ -36,16 +31,10 @@ class ActivitiesController < ApplicationController
   end
 
   def create
-    @project = Project.find(params[:activity][:project_id])
     @activity = Activity.new(activity_params)
     @activity.assignerID = current_user.id
     @activity.priority = params[:priority]
-    document_category = DocumentCategory.find(params[:activity][:documentcategories_id])
-    superviser_user = User.find(current_user.id)
-    assigned_user = User.find(params[:activity][:user_id])
-
     @activity.save
-    Notification.assigning_team_member_notification(@activity, @project).deliver
     redirect_to activities_path(:projectId => params[:activity][:project_id])
   end
 

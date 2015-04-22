@@ -15,6 +15,8 @@ class DocumentsController < ApplicationController
     @documentCategoryName = DocumentCategory.find(params[:documentCategoryId]).categoryName
 
     @documentList = Document.where('document_category_id = ? AND project_id = ?', params[:documentCategoryId], params[:projectId]).order('created_at DESC')
+
+    @activity_id = params[:activityId]
   end
 
   def new
@@ -24,10 +26,11 @@ class DocumentsController < ApplicationController
   end
 
   def create
-    @document = Document.new(document_params)
+    @document = Document.new
     @document.project_id = params[:document][:project_id]
     @document.document_category_id = params[:document][:document_category_id]
     @document.description = params[:document][:description]
+    @document.activity_id = params[:document][:activityId]
 
     begin
     @document.fileLocation = params[:document][:file].path
@@ -36,24 +39,29 @@ class DocumentsController < ApplicationController
     documentVersionMinor = Document.select(:versionMinor).where('project_id = ? AND document_category_id = ?', @document.project_id, @document.document_category_id).maximum(:versionMinor)
     documentCategoryName = DocumentCategory.find(@document.document_category_id).categoryName
 
-    if documentVersion != nil
-      if params[:versionType] == "major"
-        @document.version = documentVersion.to_i+1
-        @document.versionMinor = 0
+      if documentVersion != nil
+        if params[:versionType] == "major"
+          @document.version = documentVersion.to_i+1
+          @document.versionMinor = 0
+        else
+          @document.version = documentVersion.to_i
+          @document.versionMinor = documentVersionMinor.to_i+1
+        end
       else
-        @document.version = documentVersion.to_i
-        @document.versionMinor = documentVersionMinor.to_i+1
+        @document.version = 1
+        @document.versionMinor = 0
       end
-    else
-      @document.version = 1
-      @document.versionMinor = 0
-    end
-      documentCategoryName = documentCategoryName+' v'+@document.version.to_s+'.'+@document.versionMinor.to_s
-      @document.documentName(documentCategoryName)
-      @document.save
+        documentCategoryName = documentCategoryName+' v'+@document.version.to_s+'.'+@document.versionMinor.to_s
+        @document.documentName(documentCategoryName)
+        @document.save
 
     rescue Exception => e
 
+    end
+
+    if(@document.activity_id)
+      @activity = Activity.find(@document.activity_id)
+      @activity.update(status: 'completed')
     end
 
     redirect_to :action => 'show',

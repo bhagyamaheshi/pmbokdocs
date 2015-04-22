@@ -19,7 +19,7 @@
         <% if current_user.role_id == 1 %>
           <% @allactivities.each do |activity| %>
             <tr>
-              <td><%= link_to activity.activityName, document_path(:id =>activity.project_id, :projectId => activity.project_id, :documentCategoryId => activity.documentcategories_id)%></td>
+              <td><%= link_to activity.activityName, activity_path(:id =>activity.id, :activity_id =>activity.id, :project_id => activity.project_id, :document_category_id => activity.documentcategories_id, )%></td>
               <td><%= activity.status %></td>
               <td><%= activity.dueDate %></td>
               <td><%= activity.priority %></td>
@@ -28,7 +28,7 @@
         <% else %>
           <% @activities.each do |activity| %>
             <tr>
-              <td><%= link_to activity.activityName, document_path(:id =>activity.project_id, :projectId => activity.project_id, :documentCategoryId => activity.documentcategories_id)%></td>
+              <td><%= link_to activity.activityName, activity_path(:id =>activity.id, :activity_id =>activity.id, :project_id => activity.project_id, :document_category_id => activity.documentcategories_id)%></td>
               <td><%= activity.status %></td>
               <td><%= activity.dueDate %></td>
               <td><%= activity.priority %></td>

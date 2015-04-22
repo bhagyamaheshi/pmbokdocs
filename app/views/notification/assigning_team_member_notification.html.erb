@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+
+	<p align="left">Dear <%= @user.firstName+' '+@user.lastName %>,</p>
+
+	<p>This e-mail is to inform that you have a new task for <%= @project.projectName %> project.</p>
+
+		<ul>
+			<li>Project 				        : <%= @project.projectName %></li>
+			<li>Related Document Category 		: <%= @document_category.categoryName %></li>
+			<li>Due Date 				        : <%= @activity.dueDate %></li>
+			<li>Priority                  		: <%= @activity.priority %></li>
+			<li>Supervisor 				        : <%= @supervisor_user.firstName+' '+@supervisor_user.lastName %></li>
+		</ul>
+
+
+
+<a href="<%= url_for(controller: 'activities', action: 'show', only_path: false, activity_id: @activity.id, project_id: @project.id,
+             document_category_id: @document_category.id, user_id: @user.id, status: 'In progress') %>">Accept</a>&nbsp&nbsp&nbsp
+
+<a href="<%= url_for(controller: 'issues', action: 'index', only_path: false, activity_id: @activity.id, project_id: @project.id) %>">Decline</a>
+
+
+	<p align="left">Best Regards,<br/>
+		<%= @supervisor_user.firstName %><br/>
+		PmBokDocs</p>
+
+  </body>
+</html>
