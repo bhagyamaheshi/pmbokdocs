@@ -7,9 +7,8 @@
   <strong>Activityname:</strong>
   <%= @activity.activityName %>
 </p>
-
 <h4> Upload Document </h4><br/>
-<%= form_for @document, :url => {:controller => :documents, :action => :create} do |form| %>
+<%= form_for @document, :url => {:controller => :documents, :action => :create}, :html => { :multipart => true} do |form| %>
     <%= form.hidden_field :project_id, value: @projectId %>
     <%= form.hidden_field :document_category_id, value: @documentCategoryId %>
     <%= form.hidden_field :activity_id, value: @activityId %>
@@ -19,11 +18,14 @@
     <%= label_tag(:versionTypeMinor, "Minor release") %> <br/>
     <%= form.text_area :description, :class => "form-control" %>
     <br/>
-    <%= form.file_field :file %>
+    <%= form.file_field :upload %>
     <br/>
-    <div class="actions">
+        <div class="actions">
+          dddddd
       <%= form.submit :class => "btn btn-success" %>
+          ddddd
     </div>
+
 <% end %>
 
 <%= link_to 'Edit', edit_activity_path(@activity) %> |

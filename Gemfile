@@ -2,7 +2,9 @@ source 'https://rubygems.org'
 
 gem 'devise'
 
-gem 'paperclip', '~> 4.2'
+#gem 'paperclip', '~> 4.2'
+
+gem 'paperclip', :git => 'git://github.com/thoughtbot/paperclip.git'
 
 gem 'jquery-ui-rails'
 

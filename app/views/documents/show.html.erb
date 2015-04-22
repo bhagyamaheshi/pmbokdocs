@@ -3,7 +3,7 @@
 
   <% if current_user.role_id == 1 %>
 	<h4> Upload Document </h4><br/>
-	<%= form_for(@document) do |form| %>
+	<%= form_for @document, :html => { :multipart => true} do |form| %>
 		<%= form.hidden_field :project_id, value: params[:projectId] %>
 		<%= form.hidden_field :document_category_id, value: params[:documentCategoryId] %>
 				<%= radio_button_tag(:versionType, "major", checked = false) %>
@@ -12,7 +12,7 @@
 				<%= label_tag(:versionTypeMinor, "Minor release") %> <br/>
 				<%= form.text_area :description, :class => "form-control" %>
 				<br/>
-				<%= form.file_field :file %>
+				<%= form.file_field :upload %>
 				<br/>
 		<div class="actions">
 			<%= form.submit :class => "btn btn-success" %>
@@ -38,7 +38,7 @@
               <% if @documentList != nil %>
         			<% @documentList.each do |list| %>
           			<tr>
-            			<td><%= link_to @documentCategoryName+' v'+list.version.to_s+'.'+list.versionMinor.to_s, list.file.url %></td>
+            			<td><%= link_to @documentCategoryName+' v'+list.version.to_s+'.'+list.versionMinor.to_s, list.upload.url %></td>
                         <td><%= list.description %></td>
             			<td><%= list.created_at.to_formatted_s(:long_ordinal) %></td>
           			</tr>
