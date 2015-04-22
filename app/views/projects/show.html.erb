@@ -18,7 +18,7 @@ $(document).ready(function() {
       <td><h4><%= link_to "Activities", activities_path(:projectId => @project.id) %></h4></td>
     </tr>
     <tr>
-      <td><h4><%= link_to "Issues", issues_path %></h4></td>
+      <td><h4><%= link_to "Issues", issues_path(:projectId => @project.id) %></h4></td>
     </tr>
  </table>
 </div>

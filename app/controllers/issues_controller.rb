@@ -5,7 +5,9 @@ class IssuesController < ApplicationController
   respond_to :html
 
   def index
-    @issues = Issue.all
+    @project = Project.find(params[:projectId])
+    @issue = Issue.new
+    @issues = Issue.where('project_id = ?', params[:projectId])
     respond_with(@issues)
   end
 
@@ -22,9 +24,16 @@ class IssuesController < ApplicationController
   end
 
   def create
+    @project = Project.find(params[:issue][:project_id])
+    @user = User.find (current_user.id)
     @issue = Issue.new(issue_params)
     @issue.save
-    respond_with(@issue)
+    @issue.issueName = params[:issue][:issueName]
+    @issue.project_id = params[:issue][:project_id]
+    @issue.save
+    Notification.issue_creation_notification(@issue,@project,@user).deliver
+    redirect_to issues_path(:projectId => params[:issue][:project_id])
+    #respond_with(@issue)
   end
 
   def update
@@ -43,6 +52,6 @@ class IssuesController < ApplicationController
     end
 
     def issue_params
-      params.require(:issue).permit(:issueId, :issueName)
+      params.require(:issue).permit(:issueId, :issueName, :project_id)
     end
 end

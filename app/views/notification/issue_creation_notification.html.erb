@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+
+	<p align="left">Dear User,</p>
+
+	<p>This e-mail is to inform that an issue is created for the task for <%= @project.projectName %> project.</p>
+
+		<ul>
+			<li>Issue				        : <%= @issue.issueName %></li>
+			<li>Created By 		      : <%= @user.firstName+' '+@user.lastName %></li>
+		</ul>
+	<p align="left">Best Regards,
+		<%= @user.firstName %>
+		PmBokDocs</p>
+  </body>
+</html>

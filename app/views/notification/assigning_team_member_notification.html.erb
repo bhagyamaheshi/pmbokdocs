@@ -18,11 +18,10 @@
 		</ul>
 
 
-<a href="<%= url_for(controller: 'activities', action: 'show', only_path: false, id: @activity.id) %>">Accept</a>&nbsp
-<!--<a href="<%= url_for(#controller: 'issues', action: 'index', only_path: false, id: @project.id) %>">Decline</a> -->
+<a href="<%= url_for(controller: 'activities', action: 'show', only_path: false, id: @activity.id) %>">Accept</a>
 
-	<p align="left">Best Regards,
-		<%= @supervisor_user.firstName %>
+	<p align="left">Best Regards,<br/>
+		<%= @supervisor_user.firstName %><br/>
 		PmBokDocs</p>
   </body>
-</html>	
+</html>
