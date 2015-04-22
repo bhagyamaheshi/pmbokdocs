@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150402090140) do
+ActiveRecord::Schema.define(version: 20150416081834) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20150402090140) do
   add_index "activities", ["user_id"], name: "index_activities_on_user_id", using: :btree
 
   create_table "activity_categories", force: true do |t|
+    t.string   "categoryName"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "activityCategoryName"
@@ -72,9 +73,11 @@ ActiveRecord::Schema.define(version: 20150402090140) do
     t.datetime "updated_at"
     t.string   "status"
     t.integer  "activity_id"
+    t.integer  "project_id"
   end
 
   add_index "issues", ["activity_id"], name: "index_issues_on_activity_id", using: :btree
+  add_index "issues", ["project_id"], name: "index_issues_on_project_id", using: :btree
 
   create_table "project_teams", force: true do |t|
     t.datetime "created_at"

@@ -1,7 +1,7 @@
 <div id="all_projects" class="col-md-4">
   <div class="container">
     <div class="page-header">
-      <h1>Activity List</h1>
+      <h1><%= @project.projectName %> :Activity List</h1>
     </div>
     <br/>
     <div class="row">
@@ -42,9 +42,9 @@
         <% if current_user.role_id == 1 %>
         <!-- Button trigger modal -->
             <% link_to "Create Activity", new_activity_path(:projectId  => params[:projectId]), :class => "btn btn-success" %>
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">|
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
               Create Activity
-            </button>
+            </button> |
           </div>
         <% end %>
         <%= link_to 'Back To Project', project_path(:id =>params[:projectId]), :class => "btn btn-default" %> </div>
