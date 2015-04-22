@@ -6,8 +6,15 @@ class IssuesController < ApplicationController
 
   def index
     @project = Project.find(params[:projectId])
+<<<<<<< HEAD
+    @issues = Issue.where('project_id = ?', params[:projectId]).order('created_at DESC')
+    #@acivity = Activity.find(params[:projectId])
+    #@issues = Issue.find(@activity.id)
+    @issue = Issue.new
+=======
     @issue = Issue.new
     @issues = Issue.where('project_id = ?', params[:projectId])
+>>>>>>> af09af745b0578db86c12f313788006b98a2ae66
     respond_with(@issues)
   end
 
@@ -24,6 +31,14 @@ class IssuesController < ApplicationController
   end
 
   def create
+<<<<<<< HEAD
+    @issue = Issue.new
+    @issue.issueName = params[:issue][:issueName]
+    @issue.project_id = params[:issue][:project_id]
+    @issue.save
+      Notification.issue_creation_notification(@issue).deliver
+    redirect_to issues_path(projectId: params[:issue][:projectId])
+=======
     @project = Project.find(params[:issue][:project_id])
     @user = User.find (current_user.id)
     @issue = Issue.new(issue_params)
@@ -33,6 +48,7 @@ class IssuesController < ApplicationController
     @issue.save
     Notification.issue_creation_notification(@issue,@project,@user).deliver
     redirect_to issues_path(:projectId => params[:issue][:project_id])
+>>>>>>> af09af745b0578db86c12f313788006b98a2ae66
     #respond_with(@issue)
   end
 

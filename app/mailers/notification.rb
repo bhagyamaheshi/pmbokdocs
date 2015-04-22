@@ -26,4 +26,11 @@ class Notification < ActionMailer::Base
     mail to: 'st116391@ait.asia', subject: '[PmBokDocs]Informing an issue in Project'
   end
 
+  def issue_creation_notification(issue)
+    #@project_mailer = project
+    #@user_mailer = user
+    @issue = issue
+    mail to: 'st115637@ait.asia', subject: '[PmBokDocs]Informing an issue in Project'
+  end
+
 end
