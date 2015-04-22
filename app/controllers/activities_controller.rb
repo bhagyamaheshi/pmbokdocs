@@ -10,11 +10,19 @@ class ActivitiesController < ApplicationController
     @activity = Activity.new
     @allactivities = Activity.where('project_id = ?', params[:projectId])
     @activities = Activity.where('project_id = ?  AND user_id= ?', params[:projectId], current_user.id )
-    respond_with(@activities)
+    #respond_with(@activities)
   end
 
   def show
-    respond_with(@activity)
+    #respond_with(@activity)
+
+    @document = Document.new
+    @projectId = params[:project_id]
+    @activityId = params[:activity_id]
+    @documentCategoryId = params[:document_category_id]
+    @userId = params[:user_id]
+    @status = params[:status]
+
   end
 
   def new

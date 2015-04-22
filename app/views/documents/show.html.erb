@@ -1,5 +1,7 @@
 <div id="new_project" class="col-md-3">
 	<h2><%= @projectName.projectName %> : <%= @documentCategoryName %></h2><br/>
+
+  <% if current_user.role_id == 1 %>
 	<h4> Upload Document </h4><br/>
 	<%= form_for(@document) do |form| %>
 		<%= form.hidden_field :project_id, value: params[:projectId] %>
@@ -16,6 +18,8 @@
 			<%= form.submit :class => "btn btn-success" %>
 		</div>
 	<% end %>
+  <% end %>
+
  </div>
 <div id="new_project" class="col-md-6">
 	<div class="container">
