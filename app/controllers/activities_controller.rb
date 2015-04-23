@@ -24,6 +24,8 @@ class ActivitiesController < ApplicationController
     @userId = params[:user_id]
     @status = params[:status]
 
+    Activity.update(@activityId, :status => @status)
+
   end
 
   def new
