@@ -26,10 +26,10 @@ class IssuesController < ApplicationController
   def create
     @project = Project.find(params[:issue][:project_id])
     @user = User.find (current_user.id)
-    @issue = Issue.new(issue_params)
-    @issue.save
+    @issue = Issue.new()
     @issue.issueName = params[:issue][:issueName]
     @issue.project_id = params[:issue][:project_id]
+    @issue.status = params[:issue][:status]
     @issue.save
     Notification.issue_creation_notification(@issue,@project,@user).deliver
     redirect_to issues_path(:projectId => params[:issue][:project_id])
@@ -52,6 +52,6 @@ class IssuesController < ApplicationController
     end
 
     def issue_params
-      params.require(:issue).permit(:issueId, :issueName, :project_id)
+      params.require(:issue).permit(:issueId, :issueName, :project_id, :status)
     end
 end

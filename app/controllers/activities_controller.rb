@@ -15,7 +15,8 @@ class ActivitiesController < ApplicationController
 
   def show
     #respond_with(@activity)
-
+    @project = Project.find(params[:project_id])
+    @documentCategory = DocumentCategory.find(params[:document_category_id])
     @document = Document.new
     @projectId = params[:project_id]
     @activityId = params[:activity_id]

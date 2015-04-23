@@ -1,13 +1,29 @@
-<p>
-  <strong>Activityid:</strong>
-  <%= @activity.id %>
-</p>
+<div id="activity Details" class="col-md-6">
+  <h3>Project :<%= @project.projectName %></h3><br/>
+  <table class="table table-bordered">
+    <tr class="success">
+      <th>Activity</th>
+      <td><%= @activity.activityName %></td>
+    </tr>
+    <tr class="info">
+      <th>Document To be Done:</th>
+      <td><%= @documentCategory.categoryName%></td>
+    </tr>
+    <tr class="warning">
+      <th>Priority:</th>
+      <td><%= @activity.priority %></td>
+    </tr>
+    <tr class="warning">
+      <th>Due Date:</th>
+      <td><%= @activity.dueDate %></td>
+    </tr>
+  </table>
+  <div class="col-lg-12 text-right">
+    <%= link_to 'Activity List', activities_path(:projectId => @project.id), :class => "btn btn-info" %>
+  </div>
+</div>
 
-<p>
-  <strong>Activityname:</strong>
-  <%= @activity.activityName %>
-</p>
-
+<div id="project Details" class="col-md-4">
 <h4> Upload Document </h4><br/>
 <%= form_for @document, :url => {:controller => :documents, :action => :create} do |form| %>
     <%= form.hidden_field :project_id, value: @projectId %>
@@ -25,6 +41,4 @@
       <%= form.submit :class => "btn btn-success" %>
     </div>
 <% end %>
-
-<%= link_to 'Edit', edit_activity_path(@activity) %> |
-<%= link_to 'Back', activities_path %>
+</div>
