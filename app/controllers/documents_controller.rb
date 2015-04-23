@@ -26,14 +26,15 @@ class DocumentsController < ApplicationController
   end
 
   def create
-    @document = Document.new
+    @document = Document.new(document_params)
+
     @document.project_id = params[:document][:project_id]
     @document.document_category_id = params[:document][:document_category_id]
     @document.description = params[:document][:description]
-    @document.activity_id = params[:document][:activityId]
+    @document.activity_id = params[:document][:activity_id]
 
     begin
-    @document.fileLocation = params[:document][:file].path
+    @document.fileLocation = params[:document][:upload].path
 
     documentVersion = Document.select(:version).where('project_id = ? AND document_category_id = ?', @document.project_id, @document.document_category_id).maximum(:version)
     documentVersionMinor = Document.select(:versionMinor).where('project_id = ? AND document_category_id = ?', @document.project_id, @document.document_category_id).maximum(:versionMinor)
@@ -52,7 +53,7 @@ class DocumentsController < ApplicationController
         @document.versionMinor = 0
       end
         documentCategoryName = documentCategoryName+' v'+@document.version.to_s+'.'+@document.versionMinor.to_s
-        @document.documentName(documentCategoryName)
+        @document.rename(documentCategoryName)
         @document.save
 
     rescue Exception => e
@@ -87,7 +88,8 @@ class DocumentsController < ApplicationController
     end
 
     def document_params
-      params.require(:document).permit(:title, :description, :fileLocation, :file, :document_category_id, :project_id, :documentCategoryId, :projectId)
+      params.require(:document).permit(:title, :description, :fileLocation, :upload, :upload2, :document_category_id, :project_id, :documentCategoryId, :projectId)
+
     end
 
 end

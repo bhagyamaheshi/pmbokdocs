@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20150422110008) do
+=======
+ActiveRecord::Schema.define(version: 20150422174231) do
+>>>>>>> f60f1546955e9866a64b43929534e11ceb590187
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,13 +60,17 @@ ActiveRecord::Schema.define(version: 20150422110008) do
     t.datetime "updated_at"
     t.integer  "project_id"
     t.integer  "document_category_id"
-    t.string   "file_file_name"
-    t.string   "file_content_type"
-    t.integer  "file_file_size"
-    t.datetime "file_updated_at"
     t.integer  "version"
     t.integer  "versionMinor"
     t.integer  "activity_id"
+    t.string   "upload_file_name"
+    t.string   "upload_content_type"
+    t.integer  "upload_file_size"
+    t.datetime "upload_updated_at"
+    t.string   "upload2_file_name"
+    t.string   "upload2_content_type"
+    t.integer  "upload2_file_size"
+    t.datetime "upload2_updated_at"
   end
 
   add_index "documents", ["activity_id"], name: "index_documents_on_activity_id", using: :btree

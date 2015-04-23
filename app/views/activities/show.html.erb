@@ -1,3 +1,4 @@
+
 <div id="activity Details" class="col-md-6">
   <h3>Project :<%= @project.projectName %></h3><br/>
   <table class="table table-bordered">
@@ -25,7 +26,7 @@
 
 <div id="project Details" class="col-md-4">
 <h4> Upload Document </h4><br/>
-<%= form_for @document, :url => {:controller => :documents, :action => :create} do |form| %>
+<%= form_for @document, :url => {:controller => :documents, :action => :create}, :html => { :multipart => true} do |form| %>
     <%= form.hidden_field :project_id, value: @projectId %>
     <%= form.hidden_field :document_category_id, value: @documentCategoryId %>
     <%= form.hidden_field :activity_id, value: @activityId %>
@@ -35,10 +36,11 @@
     <%= label_tag(:versionTypeMinor, "Minor release") %> <br/>
     <%= form.text_area :description, :class => "form-control" %>
     <br/>
-    <%= form.file_field :file %>
+    <%= form.file_field :upload %>
     <br/>
-    <div class="actions">
+        <div class="actions">
       <%= form.submit :class => "btn btn-success" %>
     </div>
+
 <% end %>
 </div>

@@ -6,8 +6,11 @@ class IssuesController < ApplicationController
 
   def index
     @project = Project.find(params[:projectId])
+
+    @issues = Issue.where('project_id = ?', params[:projectId]).order('created_at DESC')
+    #@acivity = Activity.find(params[:projectId])
+    #@issues = Issue.find(@activity.id)
     @issue = Issue.new
-    @issues = Issue.where('project_id = ?', params[:projectId])
     respond_with(@issues)
   end
 

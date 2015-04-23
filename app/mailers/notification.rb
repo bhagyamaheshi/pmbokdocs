@@ -15,12 +15,19 @@ class Notification < ActionMailer::Base
 
     @project = project
 
-    mail to: 'st115637@ait.asia', subject: '[PmBokDocs] New task for '+@project.projectName+' project'
+    mail to: 'st116391@ait.asia', subject: '[PmBokDocs] New task for '+@project.projectName+' project'
   end
 
   def issue_creation_notification(issue, project, user)
     @project= project
     @user = user
+    #@user_mailer = user
+    @issue = issue
+    mail to: 'st116391@ait.asia', subject: '[PmBokDocs]Informing an issue in Project'
+  end
+
+  def issue_creation_notification(issue)
+    #@project_mailer = project
     #@user_mailer = user
     @issue = issue
     mail to: 'st115637@ait.asia', subject: '[PmBokDocs]Informing an issue in Project'

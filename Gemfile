@@ -2,7 +2,9 @@ source 'https://rubygems.org'
 
 gem 'devise'
 
-gem 'paperclip', '~> 4.2'
+#gem 'paperclip', '~> 4.2'
+
+gem 'paperclip', :git => 'git://github.com/thoughtbot/paperclip.git'
 
 gem 'jquery-ui-rails'
 
@@ -31,7 +33,9 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-gem 'spring', '~>1.3.4',        group: :development
+
+gem 'spring', '~> 1.3.4',      group: :development
+
 
 #gem for bootstrap
 gem 'bootstrap-sass'
