@@ -8,7 +8,8 @@
       <table class="table">
         <thead>
         <tr>
-          <th>Activityname</th>
+          <th>To Do</th>
+          <th>Related Document</th>
           <th>Status</th>
           <th>Due Date</th>
           <th>Priority</th>
@@ -20,6 +21,7 @@
           <% @allactivities.each do |activity| %>
             <tr>
               <td><%= link_to activity.activityName, activity_path(:id =>activity.id, :activity_id =>activity.id, :project_id => activity.project_id, :document_category_id => activity.documentcategories_id, )%></td>
+              <td><%= DocumentCategory.find(activity.documentcategories_id).categoryName %></td>
               <td><%= activity.status %></td>
               <td><%= activity.dueDate %></td>
               <td><%= activity.priority %></td>
@@ -29,6 +31,7 @@
           <% @activities.each do |activity| %>
             <tr>
               <td><%= link_to activity.activityName, activity_path(:id =>activity.id, :activity_id =>activity.id, :project_id => activity.project_id, :document_category_id => activity.documentcategories_id)%></td>
+              <td><%= DocumentCategory.find(activity.documentcategories_id).categoryName %></td>
               <td><%= activity.status %></td>
               <td><%= activity.dueDate %></td>
               <td><%= activity.priority %></td>
@@ -79,7 +82,7 @@
           <%= f.hidden_field :project_id, :value => @project.id %>
           <%= f.hidden_field :status, :value => "Incomplete" %>
           <div class="form-group">
-            <div class="col-lg-6"><%= f.label :activityName %></div>
+            <div class="col-lg-6"><%= f.label :To_Do %></div>
             <div class="col-lg-6"><%= f.text_field :activityName, :class => "form-control" %></div>
           </div>
         <br/>

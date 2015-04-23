@@ -22,7 +22,8 @@
 <a href="<%= url_for controller: 'activities', action: 'show', only_path: false,:id => @activity.id ,:activity_id => @activity.id, :project_id => @project.id,
              :document_category_id => @document_category.id, :user_id => @user.id, :status => 'In progress' %>">Accept</a>&nbsp&nbsp&nbsp
 
-<a href="<%= url_for controller: 'issues', action: 'index', only_path: false, :id => @activity.id, :activity_id => @activity.id, :projectId => @project.id %>">Decline</a>
+<a href="<%= url_for controller: 'issues', action: 'new', only_path: false, :activity_id=>@activity.id, :projectId=>@project.id,
+:document_category_id=>@document_category.id, :user_id=>@user.id, :status=>'Open '%>">Decline</a>
 
 
 

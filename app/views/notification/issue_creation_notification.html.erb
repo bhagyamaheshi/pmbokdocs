@@ -7,14 +7,10 @@
 
 	<p align="left">Dear User,</p>
 
-	<p>This e-mail is to inform that an issue is created for the task for <%= @project.projectName %> project.</p>
-
-		<ul>
-			<li>Issue				        : <%= @issue.issueName %></li>
-			<li>Created By 		      : <%= @user.firstName+' '+@user.lastName %></li>
-		</ul>
-	<p align="left">Best Regards,
-		<%= @user.firstName %>
+	This e-mail is to inform  you that an <%= @issue.issueName %> for the task assigned for the project <%= @project.projectName%>
+    <br/>
+	<p align="left">Best Regards,<br/>
+		<%= @user.firstName %><br/>
 		PmBokDocs</p>
   </body>
 </html>

@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   get 'projects/:projectId' => 'project_teams#index'
   post 'activities/show' => 'documents#create'
   get 'activities/:activity_id' => 'documents#show'
+  #post '/activities' => 'issues#createIssue'
 
   devise_scope :user do
     authenticated :user do
